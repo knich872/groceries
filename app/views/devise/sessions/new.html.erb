@@ -24,9 +24,9 @@
       </div>
 
       <div class="form-actions d-flex justify-content-between">
-        <%= f.button :submit, "Log in", class: "btn btn-lg btn-grad rounded-2" %>
+        <%= f.button :submit, "Log in", class: "btn btn-login btn-wide" %>
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <%= link_to "Sign up", new_registration_path(resource_name), class: "btn justify-content-end" %><br />
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-wide btn-sign-up justify-content-end" %><br />
         <% end %>
       </div>
     <% end %>
