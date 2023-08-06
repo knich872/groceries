@@ -1,6 +1,6 @@
 .btn-login {
   background-image: linear-gradient(to right, $sign-in-gradient);
-  box-shadow: 10px 5px 20px lightgrey;
+  box-shadow: 5px 5px 10px rgb(159, 159, 159);
   border: none;
   color: white;
 }
@@ -8,11 +8,17 @@
 .btn-sign-up {
   border-color: lightgray;
   border: 2px;
-  box-shadow: 5px 2px 10px lightgray;
+  box-shadow: 5px 5px 10px rgb(159, 159, 159);
 }
 
-.btn-wide {
+.btn-large {
   width: 150px;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+}
+
+.gradient-line {
+  border-bottom-style: inset;
+  border-bottom: 2px;
+  border-color: $sign-in-gradient;
 }
