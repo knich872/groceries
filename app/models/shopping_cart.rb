@@ -1,3 +1,4 @@
 class ShoppingCart < ApplicationRecord
-  has_one :cart_member
+  has_many :cart_member
+  has_many :user, through: :cart_member
 end
