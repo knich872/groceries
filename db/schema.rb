@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_093919) do
 
   create_table "shopping_carts", force: :cascade do |t|
     t.string "name"
-    t.string "shopping_list", array: true
+    t.string "shopping_list", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

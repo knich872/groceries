@@ -10,15 +10,17 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super do |user|
-      if user.shopping_cart.nil?
-        # @user = user
-        redirect_to new_user_shopping_cart_path(user.id)
-      else
-        redirect_to user_shopping_cart_path(user.shopping_cart.id)
-      end
-      return
-    end
+    super
+    # super do |user|
+    #   if user.shopping_cart.nil?
+    #     # @user = user
+    #     redirect_to new_shopping_cart_path(user.id)
+    #   else
+    #     @shopping_cart = current_user.shopping_cart
+    #     redirect_to shopping_cart_path(@shopping_cart.id)
+    #   end
+    #   return
+    # end
   end
 
   # DELETE /resource/sign_out

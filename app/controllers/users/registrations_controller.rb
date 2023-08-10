@@ -11,15 +11,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do |user|
-      if user.id?
-        @current_user = user
-        redirect_to new_user_shopping_cart_path(user.id)
-      else
-        render :new, status: :unprocessable_entity
-      end
-      return
-    end
+    super
+    # super do |user|
+    #   if user.id?
+    #     redirect_to new_shopping_cart_path
+    #   else
+    #     render :new, status: :unprocessable_entity
+    #   end
+    #   return
+    # end
   end
 
   # GET /resource/edit

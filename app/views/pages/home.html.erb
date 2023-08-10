@@ -1,2 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% unless current_user.nil? %>
+  <% if current_user.shopping_cart.nil? %>
+    <%= link_to "Create your shopping cart now", new_shopping_cart_path, class: "btn btn-primary" %>
+  <% end %>
+<% end %>
