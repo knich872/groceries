@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users
-  resources :shopping_carts, only: [:show, :new, :create]
+  resources :shopping_carts, only: [:index, :show, :new, :create]
 
   resources :cart_members, only: [:show, :new, :create]
   # Defines the root path route ("/")

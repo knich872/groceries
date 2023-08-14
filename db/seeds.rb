@@ -19,15 +19,56 @@ tester = User.create!(
   email: "tester@groceries.com",
   password: "123456"
 )
+brother = User.create!(
+  username: "Brother",
+  email: "brother@groceries.com",
+  password: "123456"
+)
+
+sister = User.create!(
+  username: "Sister",
+  email: "sister@groceries.com",
+  password: "123456"
+)
 
 cart = ShoppingCart.create!(
   name: "My cart",
   shopping_list: []
 )
 
+cartB = ShoppingCart.create!(
+  name: "My brother's cart",
+  shopping_list: []
+  )
+
+cartS = ShoppingCart.create!(
+  name: "My sister's cart",
+  shopping_list: []
+  )
+
 member = CartMember.create!(
   user: tester,
   shopping_cart: cart
+)
+
+member2 = CartMember.create!(
+  user: tester,
+  shopping_cart: cartB
+)
+
+member3 = CartMember.create!(
+  user: tester,
+  shopping_cart: cartS
+)
+
+memberb = CartMember.create!(
+  user: brother,
+  shopping_cart: cartB
+)
+
+members = CartMember.create!(
+  user: sister,
+  shopping_cart: cartS
 )
 
 puts "All done!"

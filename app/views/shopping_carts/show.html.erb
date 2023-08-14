@@ -1,1 +1,6 @@
 <h1>This is my shopping cart</h1>
+<% if @shopping_cart.id == current_user.cart_member.shopping_cart.id %>
+  <% @shopping_cart.user.each do |u| %>
+    <%= u.username %>
+  <% end %>
+<% end %>

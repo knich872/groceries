@@ -1,0 +1,12 @@
+<h1>Here are your shopping carts</h1>
+<%= form_with url: shopping_carts_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Enter a shopping cart name"
+    %>
+  <%= submit_tag "Find", name: "", class: "btn" %>
+<% end %>
+<% @shopping_carts.each do |shopping_cart| %>
+  <%= render shopping_cart %>
+<% end %>
