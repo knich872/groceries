@@ -4,12 +4,12 @@ class ShoppingCartsController < ApplicationController
   def index
     @shopping_carts = ShoppingCart.all
     if params[:query].present?
-      @shopping_carts = ShoppingCart.search_by_keywords(params[:query])
+      @shopping_carts = @shopping_carts.search_by_keywords(params[:query])
     end
     if params[:filter].present?
-      @shopping_carts = ShoppingCart.left_outer_joins(:cart_members).left_outer_joins(:users).where(id: params[:filter])
+      @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
     end
-    raise
+
   end
 
   def show
@@ -25,7 +25,7 @@ class ShoppingCartsController < ApplicationController
   def create
     @shopping_cart = ShoppingCart.new(shopping_cart_params)
     if @shopping_cart.save
-      @cart_member = CartMember.new(user: current_user, shopping_cart: @shopping_cart)
+      @cart_member = CartMember.create(user: current_user, shopping_cart: @shopping_cart)
       # raise
       redirect_to @shopping_cart, notice: "Shopping cart was successfully created!"
     else

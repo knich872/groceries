@@ -1,11 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-  <%# if current_user.cart_members.nil? %>
-    <%= link_to "Create a shopping cart now", new_shopping_cart_path, class: "btn btn-primary" %>
-    <%= link_to "Join a shopping cart now", shopping_carts_path, class: "btn btn-primary" %>
-  <%# end %>
 <% if user_signed_in? %>
+  <%= link_to "Create a shopping cart now", new_shopping_cart_path, class: "btn btn-primary" %>
+  <%= link_to "Join a shopping cart now", shopping_carts_path, class: "btn btn-primary" %>
   <% if current_user.shopping_carts %>
-    <%= link_to "Go to my shopping carts", shopping_carts_path(filter: current_user.id), class: "btn btn-primart" %>
+    <%= link_to "Go to my shopping carts", shopping_carts_path(filter: current_user.id), class: "btn btn-primary" %>
   <% end %>
 <% end %>
