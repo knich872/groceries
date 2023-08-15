@@ -8,11 +8,8 @@ class ShoppingCartsController < ApplicationController
     end
     if params[:filter].present?
       @shopping_carts = ShoppingCart.left_outer_joins(:cart_members).left_outer_joins(:users).where(id: params[:filter])
-      #@shopping_carts = ShoppingCart.joins(
-        #"LEFT JOIN cart_members ON cart_member.shopping_cart_id = shopping_cart.id
-        #LEFT JOIN users ON user.id = cart_member.user_id").where(id: params[:filter])
-      # raise
     end
+    raise
   end
 
   def show
