@@ -7,7 +7,7 @@ class ShoppingCartsController < ApplicationController
       @shopping_carts = ShoppingCart.search_by_keywords(params[:query])
     end
     if params[:filter].present?
-      @shopping_carts = @shopping_carts.joins(:cart_members, :users).where(id: params[:filter])
+      @shopping_carts = ShoppingCart.left_outer_joins(:cart_members).left_outer_joins(:users).where(id: params[:filter])
       #@shopping_carts = ShoppingCart.joins(
         #"LEFT JOIN cart_members ON cart_member.shopping_cart_id = shopping_cart.id
         #LEFT JOIN users ON user.id = cart_member.user_id").where(id: params[:filter])
@@ -16,8 +16,8 @@ class ShoppingCartsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    # @shopping_cart = ShoppingCart.where(shopping_cart: current_user.shopping_cart.id)
+    @shopping_cart = ShoppingCart.find(params[:id])
+    # @cart_members = CartMember.joins(:users, :shopping_carts).where(users.ids = cart_members.user_ids && cart_members.shopping_cart_ids = @shopping_cart)
   end
 
   def new
@@ -29,7 +29,7 @@ class ShoppingCartsController < ApplicationController
     @shopping_cart = ShoppingCart.new(shopping_cart_params)
     if @shopping_cart.save
       @cart_member = CartMember.new(user: current_user, shopping_cart: @shopping_cart)
-      raise
+      # raise
       redirect_to @shopping_cart, notice: "Shopping cart was successfully created!"
     else
       render :new, status: :unprocessable_entity
