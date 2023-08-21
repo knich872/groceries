@@ -1,7 +1,13 @@
 <h1>This is my shopping cart</h1>
-<%= render "cart_member/cart_member" %>
-<%# if current_user.cart_members.shopping_carts.ids.includes?(@shopping_cart.id) %>
-  <%# @shopping_cart.user.each do |u| %>
-    <%#= u.username %>
-  <%# end %>
-<%# end %>
+<div class="container">
+  <h3><%= @shopping_cart.name %></h3>
+  <ul>
+    <% @shopping_cart.cart_members.each do |member| %>
+      <% user = member.user_id %>
+      <li>
+        <%= @users.find(user).username %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-primary" %>
+</div>
