@@ -1,11 +1,24 @@
 <h1>This is my shopping cart</h1>
 <div class="container">
   <h3><%= @shopping_cart.name %></h3>
+  <h5>Members in this cart</h2>
   <ul>
     <% @shopping_cart.cart_members.each do |member| %>
       <% user = member.user_id %>
       <li>
         <%= @users.find(user).username %>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+  <br>
+  <h5>Items in this cart</h5>
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <%= item.name %>
+        <%= image_tag item.photo, class: "food-pic" %>
+        <%#= render "items/item" %>
       </li>
     <% end %>
   </ul>

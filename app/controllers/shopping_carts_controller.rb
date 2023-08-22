@@ -19,6 +19,8 @@ class ShoppingCartsController < ApplicationController
       redirect_to shopping_cart_path, :notice => "Successfully joined shopping cart."
     end
     @users = User.all
+    @items = Item.all
+    # @items = Item.where(shopping_cart: params[:id])
   end
 
   def new

@@ -1,7 +1,9 @@
 class ShoppingCart < ApplicationRecord
   has_many :cart_members
   has_many :users, through: :cart_members
-  validates :name, presence: true
+  has_many :cart_items
+  has_many :items, through: :cart_items
+  validates :name, presence: true, uniqueness: true
 
   include PgSearch::Model
 
