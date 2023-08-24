@@ -21,13 +21,21 @@
   <br>
   <h5>Items in this cart</h5>
   <ul>
-    <%# @items.each do |item| %>
+    <% @cart_items.each do |product| %>
       <li>
-        <%#= item.name %>
-        <%#= image_tag item.photo, class: "food-pic" %>
-        <%#= render "items/item" %>
+        <div class="container">
+          <div class="row">
+            <div class="d-flex">
+              <p><%= product.item.name %></p>
+              <div>
+                <%= image_tag product.item.photo, class: "food-pic" %>
+              </div>
+              <p>Added by: <%= product.added_by %></p>
+            </div>
+          </div>
+        </div>
       </li>
-    <%# end %>
+    <% end %>
   </ul>
   <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-primary" %>
 </div>

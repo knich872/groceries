@@ -67,12 +67,22 @@ member3 = CartMember.create!(
   shopping_cart: cartS
 )
 
-memberb = CartMember.create!(
+member4 = CartMember.create!(
+  user: brother,
+  shopping_cart: cart
+)
+
+member5 = CartMember.create!(
+  user: sister,
+  shopping_cart: cart
+)
+
+member6 = CartMember.create!(
   user: brother,
   shopping_cart: cartB
 )
 
-members = CartMember.create!(
+member7 = CartMember.create!(
   user: sister,
   shopping_cart: cartS
 )
@@ -110,43 +120,43 @@ puts "Creating cart items"
 drink1 = CartItem.create!(
   item: beer,
   shopping_cart: cart,
-  added_by: tester
+  added_by: "Tester"
 )
 
 drink2 = CartItem.create!(
   item: soda,
   shopping_cart: cart,
-  added_by: sister
+  added_by: "Sister"
 )
 
 drink3 = CartItem.create!(
   item: cocktail,
   shopping_cart: cart,
-  added_by: brother
+  added_by: "Brother"
 )
 
 drink4 = CartItem.create!(
   item: beer,
   shopping_cart: cartB,
-  added_by: tester
+  added_by: "Tester"
 )
 
 drink5 = CartItem.create!(
   item: beer,
   shopping_cart: cartB,
-  added_by: brother
+  added_by: "Brother"
 )
 
 drink6 = CartItem.create!(
   item: soda,
   shopping_cart: cartS,
-  added_by: tester
+  added_by: "Tester"
 )
 
 drink7 = CartItem.create!(
   item: soda,
   shopping_cart: cartS,
-  added_by: sister
+  added_by: "Sister"
 )
 
 puts "Cart items complete..."

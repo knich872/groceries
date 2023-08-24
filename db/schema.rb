@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_22_021853) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_035948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_021853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "added_by"
+    t.boolean "bought", default: false
     t.index ["item_id"], name: "index_cart_items_on_item_id"
     t.index ["shopping_cart_id"], name: "index_cart_items_on_shopping_cart_id"
   end

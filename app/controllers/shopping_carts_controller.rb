@@ -17,13 +17,14 @@ class ShoppingCartsController < ApplicationController
     @users = User.all
     @cart_member = CartMember.new
     # @cart_member.user = current_user
-    @cart_member.shopping_cart = @shopping_cart
+    # @cart_member.shopping_cart = @shopping_cart
     # if @cart_member.save
     #   redirect_to @shopping_cart, notice: "You were successfully added!"
     # else
     #   render :new, status: :unprocessable_entity
     # end
-    # @items = Item.where(shopping_cart_ids: params[:id])
+    @cart_items = CartItem.where(shopping_cart_id: @shopping_cart)
+    # raise
   end
 
   def new
