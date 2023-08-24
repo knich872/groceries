@@ -14,13 +14,16 @@ class ShoppingCartsController < ApplicationController
 
   def show
     @shopping_cart = ShoppingCart.find(params[:id])
-    unless current_user.shopping_cart_ids.include?(@shopping_cart.id)
-      @cart_member = CartMember.create(user: current_user, shopping_cart: @shopping_cart)
-      redirect_to shopping_cart_path, :notice => "Successfully joined shopping cart."
-    end
     @users = User.all
-    @items = Item.all
-    # @items = Item.where(shopping_cart: params[:id])
+    @cart_member = CartMember.new
+    # @cart_member.user = current_user
+    @cart_member.shopping_cart = @shopping_cart
+    # if @cart_member.save
+    #   redirect_to @shopping_cart, notice: "You were successfully added!"
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
+    # @items = Item.where(shopping_cart_ids: params[:id])
   end
 
   def new
@@ -31,7 +34,7 @@ class ShoppingCartsController < ApplicationController
     @shopping_cart = ShoppingCart.new(shopping_cart_params)
     if @shopping_cart.save
       @cart_member = CartMember.create(user: current_user, shopping_cart: @shopping_cart)
-      redirect_to @shopping_cart, notice: "Shopping cart was successfully created!"
+      redirect_to shopping_carts_path(@shopping_cart), notice: "Shopping cart was successfully created!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,7 +43,7 @@ class ShoppingCartsController < ApplicationController
   private
 
   def shopping_cart_params
-    params.require(:shopping_cart).permit(:name, :shopping_list)
+    params.require(:shopping_cart).permit(:name)
   end
 
   def sanitize_page_params

@@ -1,6 +1,13 @@
 <h1>This is my shopping cart</h1>
 <div class="container">
   <h3><%= @shopping_cart.name %></h3>
+  <%= simple_form_for [@shopping_cart, @cart_member], url: shopping_cart_cart_member_path(@shopping_cart), method: :post do |f| %>
+    <div class="form-inputs">
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Join this cart", class: "btn btn-primary" %>
+    </div>
+  <% end %>
   <h5>Members in this cart</h2>
   <ul>
     <% @shopping_cart.cart_members.each do |member| %>
@@ -14,13 +21,13 @@
   <br>
   <h5>Items in this cart</h5>
   <ul>
-    <% @items.each do |item| %>
+    <%# @items.each do |item| %>
       <li>
-        <%= item.name %>
-        <%= image_tag item.photo, class: "food-pic" %>
+        <%#= item.name %>
+        <%#= image_tag item.photo, class: "food-pic" %>
         <%#= render "items/item" %>
       </li>
-    <% end %>
+    <%# end %>
   </ul>
   <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-primary" %>
 </div>
