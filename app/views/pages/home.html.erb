@@ -1,9 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to GrocerEase!</h1>
 <% if user_signed_in? %>
-  <%= link_to "Create a shopping cart now", new_shopping_cart_path, class: "btn btn-primary" %>
-  <%= link_to "Join a shopping cart now", shopping_carts_path, class: "btn btn-primary" %>
-  <% if current_user.shopping_carts %>
-    <%= link_to "Go to my shopping carts", shopping_carts_path(filter: current_user.id), class: "btn btn-primary" %>
-  <% end %>
+  <div class="row">
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">New</h5>
+        <p class="card-text">Create a new shopping cart.</p>
+        <%= link_to "GO", new_shopping_cart_path, class: "btn btn-circle" %>
+      </div>
+    </div>
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Join</h5>
+        <p class="card-text">Become a member of an existing shopping cart.</p>
+        <%= link_to "GO", shopping_carts_path, class: "btn btn-circle" %>
+      </div>
+    </div>
+    <% if current_user.shopping_carts %>
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">View</h5>
+        <p class="card-text">See all your shopping carts.</p>
+          <%= link_to "GO", shopping_carts_path(filter: current_user.id), class: "btn btn-circle" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
 <% end %>

@@ -1,4 +1,5 @@
 class ShoppingCartsController < ApplicationController
+  before_action :set_shopping_cart, only: [:show]
   before_action :sanitize_page_params
 
   def index
@@ -13,7 +14,6 @@ class ShoppingCartsController < ApplicationController
   end
 
   def show
-    @shopping_cart = ShoppingCart.find(params[:id])
     @users = User.all
     @cart_member = CartMember.new
     # @cart_member.user = current_user
@@ -24,6 +24,7 @@ class ShoppingCartsController < ApplicationController
     #   render :new, status: :unprocessable_entity
     # end
     @cart_items = CartItem.where(shopping_cart_id: @shopping_cart)
+    @items = Item.all
     # raise
   end
 
@@ -42,6 +43,10 @@ class ShoppingCartsController < ApplicationController
   end
 
   private
+
+  def set_shopping_cart
+    @shopping_cart = ShoppingCart.find(params[:id])
+  end
 
   def shopping_cart_params
     params.require(:shopping_cart).permit(:name)

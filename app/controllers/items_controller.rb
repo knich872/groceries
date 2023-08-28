@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
+  before_action :sanitize_page_params
 
   def index
     @items = Item.all
+
   end
 
   def show
@@ -13,9 +15,11 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @shopping_cart = ShoppingCart.find(params[:id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to @item, notice: "Item was successfully added!"
+      @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart)
+      redirect_to @shopping_cart, notice: "New item was successfully added!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,6 +29,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :photo)
+  end
+
+  def sanitize_page_params
+    # params[:filter] = params[:filter].to_i
+    params[:id] = params[:id].to_i
   end
 
 end
