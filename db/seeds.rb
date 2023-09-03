@@ -93,25 +93,31 @@ puts "Creating items"
 beer = Item.create!(
   name: "Kirin Lager"
 )
-beer_photo_url = "https://products3.imgix.drizly.com/ci-kirin-lager-114156948320ecb9.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"
-file = URI.open(beer_photo_url)
-beer.photo.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+beer_photo_urls = ["https://products3.imgix.drizly.com/ci-kirin-lager-114156948320ecb9.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"]
+beer_photo_urls.each do |photo|
+  file = URI.open(photo)
+  beer.photos.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+end
 
 
 soda = Item.create!(
   name: "Coke Zero"
 )
-soda_photo_url = "https://pics.walgreens.com/prodimg/416902/900.jpg"
-file = URI.open(soda_photo_url)
-soda.photo.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+soda_photo_urls = ["https://pics.walgreens.com/prodimg/416902/900.jpg"]
+soda_photo_urls.each do |photo|
+  file = URI.open(photo)
+  soda.photos.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+end
 
 
 cocktail = Item.create!(
   name: "Strong Zero"
 )
-cocktail_photo_url = "https://www.wine-searcher.com/images/labels/63/09/11646309.jpg?width=260&height=260&fit=bounds&canvas=260,260"
-file = URI.open(cocktail_photo_url)
-cocktail.photo.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+cocktail_photo_urls = ["https://www.wine-searcher.com/images/labels/63/09/11646309.jpg?width=260&height=260&fit=bounds&canvas=260,260"]
+cocktail_photo_urls.each do |photo|
+  file = URI.open(photo)
+  cocktail.photos.attach(io: file, filename: "photo_1.png", content_type: "image/png")
+end
 
 
 puts "Items complete..."

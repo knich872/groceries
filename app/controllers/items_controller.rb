@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
   end
 
   def show
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @shopping_cart = ShoppingCart.find(params[:id])
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_zid])
     @item = Item.new(item_params)
     if @item.save
       @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart)

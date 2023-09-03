@@ -1,12 +1,15 @@
 <h1>This is my shopping cart</h1>
 <div class="container">
   <h3><%= @shopping_cart.name %></h3>
-  <%= simple_form_for [@shopping_cart, @cart_member], url: shopping_cart_cart_member_path(@shopping_cart), method: :post do |f| %>
-    <div class="form-inputs">
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, "Join this cart", class: "btn btn-primary" %>
-    </div>
+  <% unless current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
+    <%#= link_to "Join", new_shopping_cart_cart_member_path(@shopping_cart), class: "btn btn-food" %>
+    <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>
+      <div class="form-inputs">
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Join this cart", class: "btn btn-food" %>
+      </div>
+    <% end %>
   <% end %>
   <h5>Members in this cart</h2>
   <ul>
@@ -21,22 +24,28 @@
   <br>
   <h5>Items in this cart</h5>
   <ul>
-    <% @cart_items.each do |product| %>
+    <% @cart_items.each do |cart_item| %>
       <li>
         <div class="container">
           <div class="row">
             <div class="d-flex">
-              <p><%= product.item.name %></p>
+              <p><%= cart_item.item.name %></p>
               <div>
-                <%= image_tag product.item.photo, class: "food-pic" %>
+              <% cart_item.item.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fit %>
+              <% end %>
               </div>
-              <p>Added by: <%= product.added_by %></p>
+              <p>Added by: <%= cart_item.added_by %></p>
             </div>
           </div>
         </div>
       </li>
     <% end %>
   </ul>
-  <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-primary" %>
-  <%= link_to "Add a new item", new_shopping_cart_item_path(@shopping_cart), class: "btn btn-primary" %>
+  <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-food" %>
+  <% if current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
+    <%#= link_to "Add a new item", new_shopping_cart_item_cart_item_path(@shopping_cart), class: "btn btn-food" %>
+    <%= link_to "Search for items", shopping_cart_items_path(@shopping_cart), class: "btn btn-food" %>
+  <% end %>
+    <%= %>
 </div>

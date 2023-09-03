@@ -7,9 +7,9 @@ class ShoppingCartsController < ApplicationController
     if params[:query].present?
       @shopping_carts = @shopping_carts.search_by_keywords(params[:query])
     end
-    if params[:filter].present?
-      @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
-    end
+    # if params[:filter].present?
+    #   @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
+    # end
     # raise
   end
 
@@ -23,7 +23,7 @@ class ShoppingCartsController < ApplicationController
     # else
     #   render :new, status: :unprocessable_entity
     # end
-    @cart_items = CartItem.where(shopping_cart_id: @shopping_cart)
+    @cart_items = @shopping_cart.cart_items
     @items = Item.all
     # raise
   end

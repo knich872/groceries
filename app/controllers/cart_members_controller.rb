@@ -1,11 +1,8 @@
-class CartMemberController < ApplicationController
-
-  def new
-    @cart_member = CartMember.new()
-  end
+class CartMembersController < ApplicationController
 
   def create
     @cart_member = CartMember.new(cart_member_params)
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart])
     @cart_member.user = current_user
     @cart_member.shopping_cart = @shopping_cart
     if @cart_member.save
