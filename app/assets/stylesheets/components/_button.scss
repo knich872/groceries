@@ -1,8 +1,9 @@
-.btn-login {
-  background-image: linear-gradient(to right, $sign-in-gradient);
+.btn-food {
+  background-image: linear-gradient(to right, $food-gradient);
   box-shadow: 5px 5px 10px rgb(159, 159, 159);
   border: none;
   color: white;
+  text-shadow: 1px 1px 3px grey;
 }
 
 .btn-sign-up {
@@ -20,5 +21,45 @@
 .gradient-line {
   border-bottom-style: inset;
   border-bottom: 2px;
-  border-color: $sign-in-gradient;
+  border-color: $ease-gradient;
+}
+
+.btn-circle {
+  margin-top: 50px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: rgb(90, 90, 235);
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px grey;
+  line-height: 4 !important;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+.btn-circle:hover {
+  background-color: rgb(90, 136, 235);
+  color: white;
+  font-weight: bold;
+}
+
+.btn-dashed {
+  margin-top: 50px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: rgb(156, 156, 235);
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px grey;
+  line-height: 4 !important;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+.btn-dashed:hover {
+  background-color: #F4F4F4;
+  color: #F4F4F4;
+  font-weight: bold;
+  text-shadow: none;
+  box-shadow: none;
 }

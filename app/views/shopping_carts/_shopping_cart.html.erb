@@ -1,12 +1,12 @@
-<div class="card" style="width: 18rem;">
+<div class="card card-round" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= shopping_cart.name %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= shopping_cart.created_at %></h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <% if current_user.shopping_cart_ids.include?(shopping_cart.id) %>
-      <%= link_to "View cart", shopping_cart_path(shopping_cart), class: "card-link" %>
+      <%= link_to "View cart", shopping_cart_path(shopping_cart), class: "btn btn-large btn-food" %>
     <% else %>
-      <%= link_to "Join cart", shopping_cart_path(shopping_cart), class: "card-link" %>
+      <%= link_to "Join cart", shopping_cart_path(shopping_cart), class: "btn btn-large btn-food" %>
     <% end %>
   </div>
 </div>

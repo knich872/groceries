@@ -1,0 +1,24 @@
+.card-solid {
+  border: solid 2px darkgrey;
+  border-radius: 30px;
+}
+
+.card-dashed {
+  border: dashed 2px darkgrey;
+  border-radius: 30px;
+}
+
+.card-round {
+  border: solid 4px darkgrey;
+  border-radius: 30px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.card-body {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
