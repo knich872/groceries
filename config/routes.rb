@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :shopping_carts, only: [:index, :show, :new, :create] do
     resources :cart_members, only: [:create]
-    resources :items, only: [:index, :show, :new, :create]
-    resources :cart_items, only: [:create]
+    resources :items, only: [:index, :show, :new, :create] do
+      resources :cart_items, only: [:new, :create]
+    end
   end
 
+  resources :cart_items, only: [:update]
   # Defines the root path route ("/")
   # root "articles#index"
 end

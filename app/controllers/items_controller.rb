@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     if @item.save
-      @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart)
+      @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart, added_by: current_user.username)
       redirect_to @shopping_cart, notice: "New item was successfully added!"
     else
       render :new, status: :unprocessable_entity
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :photo)
+    params.require(:item).permit(:name, photos: [])
   end
 
   def sanitize_page_params
