@@ -1,10 +1,10 @@
 <h1>I want to add a new item to this shopping cart</h1>
-<%= simple_form_for @item do |f| %>
+<%= simple_form_for [@shopping_cart, @item] do |f| %>
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :photo, as: :file, input_html: { multiple: false } %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit, class: "btn btn-food" %>
   </div>
 <% end %>

@@ -12,11 +12,12 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
   end
 
   def create
-    @shopping_cart = ShoppingCart.find(params[:shopping_cart_zid])
     @item = Item.new(item_params)
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     if @item.save
       @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart)
       redirect_to @shopping_cart, notice: "New item was successfully added!"
@@ -33,7 +34,7 @@ class ItemsController < ApplicationController
 
   def sanitize_page_params
     # params[:filter] = params[:filter].to_i
-    params[:id] = params[:id].to_i
+    # params[:id] = params[:id].to_i
   end
 
 end
