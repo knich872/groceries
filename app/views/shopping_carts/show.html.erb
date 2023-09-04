@@ -25,29 +25,31 @@
   <h5>Items in this cart</h5>
   <ul>
     <% @cart_items.each do |cart_item| %>
-      <li>
-        <div class="container">
-          <div class="row">
-            <div class="d-flex">
-              <p><%= cart_item.item.name %></p>
-              <div>
-              <%#= image_tag(cart_item.photo), class: "food-pic" %>
-              <% cart_item.item.photos.each do |photo| %>
-                <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
-              <% end %>
-              </div>
-              <p>Added by: <%= cart_item.added_by %></p>
-              <%#= link_to "Buy this item", shopping_cart_cart_item_path(cart_item), class: "btn" %>
-              <% unless cart_item.bought?%>
-                <%= simple_form_for cart_item do |f| %>
-                  <%= f.input :bought, as: :hidden, input_html: { value: true } %>
-                  <%= f.submit 'Buy this item', class: 'btn' %>
+      <% if cart_item.bought == false %>
+        <li>
+          <div class="container">
+            <div class="row">
+              <div class="d-flex">
+                <p><%= cart_item.item.name %></p>
+                <div>
+                <%#= image_tag(cart_item.photo), class: "food-pic" %>
+                <% cart_item.item.photos.each do |photo| %>
+                  <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
                 <% end %>
-              <% end %>
+                </div>
+                <p>Added by: <%= cart_item.added_by %></p>
+                <%#= link_to "Buy this item", shopping_cart_cart_item_path(cart_item), class: "btn" %>
+                <% unless cart_item.bought?%>
+                  <%= simple_form_for cart_item do |f| %>
+                    <%= f.input :bought, as: :hidden, input_html: { value: true } %>
+                    <%= f.submit 'Buy this item', class: 'btn' %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
   <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-food" %>

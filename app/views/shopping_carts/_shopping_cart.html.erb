@@ -1,7 +1,7 @@
 <% if current_user.shopping_cart_ids.include?(shopping_cart.id) %>
   <div class="card card-round" style="width: 18rem;">
 <% else %>
-  <div class="card card-round-faded" style="width: 18rem;">
+  <div class="card card-round-dashed" style="width: 18rem;">
 <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= shopping_cart.name %></h5>
