@@ -7,9 +7,9 @@ class ShoppingCartsController < ApplicationController
     if params[:query].present?
       @shopping_carts = @shopping_carts.search_by_keywords(params[:query])
     end
-    # if params[:filter].present?
-    #   @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
-    # end
+    if params[:filter].present?
+      @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
+    end
     # raise
   end
 
@@ -53,7 +53,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def sanitize_page_params
-    params[:filter] = params[:filter].to_i
+    # params[:filter] = params[:filter].to_i
     # params[:id] = params[:id].to_i
   end
 

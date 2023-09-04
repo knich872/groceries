@@ -31,6 +31,7 @@
             <div class="d-flex">
               <p><%= cart_item.item.name %></p>
               <div>
+              <%# <%= image_tag cart_item.photo, class: "food-pic" %> %>
               <% cart_item.item.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fit %>
               <% end %>
