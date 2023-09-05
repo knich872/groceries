@@ -3,11 +3,16 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @cart_item = CartItem.new
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    if params[:query].present?
+      @items = @items.search_by_keywords(params[:query])
+    end
   end
 
   def show
     @item = Item.find(params[:id])
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
   end
 
   def new

@@ -1,4 +1,12 @@
 <h1>These are the available items</h1>
+<%= form_with url: shopping_cart_items_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for items here..."
+    %>
+  <%= submit_tag "Find", name: "", class: "btn" %>
+<% end %>
 <% @items.each do |item| %>
   <%= render item %>
 <% end %>
