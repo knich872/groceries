@@ -9,11 +9,11 @@ require "open-uri"
 
 puts "Destroying old seeds"
 
-User.destroy_all
-ShoppingCart.destroy_all
 CartMember.destroy_all
-Item.destroy_all
 CartItem.destroy_all
+ShoppingCart.destroy_all
+Item.destroy_all
+User.destroy_all
 
 puts "Creating users"
 

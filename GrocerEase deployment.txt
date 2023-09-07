@@ -1,0 +1,8 @@
+GrocerEase deployment
+
+Detecting rails configuration failed
+remote:        set HEROKU_DEBUG_RAILS_RUNNER=1 to debug
+
+No Procfile detected, using the default web server.
+remote:        We recommend explicitly declaring how to boot your server process via a Procfile.
+remote:        https://devcenter.heroku.com/articles/ruby-default-web-server
