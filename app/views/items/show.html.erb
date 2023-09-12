@@ -1,4 +1,7 @@
-<%= render item %>
-  <%= simple_form_for [@item, @cart_item], html: { class: "border-bottom mb-3, pb-3" } do |f| %>
-    <%= f.submit class: "btn" %>
-  <% end %>
+<%= @item.name %>
+<% @item.photos.each do |photo| %>
+  <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
+<% end %>
+  <%#= simple_form_for [@item, @cart_item], html: { class: "border-bottom mb-3, pb-3" } do |f| %>
+    <%#= f.submit class: "btn" %>
+  <%# end %>

@@ -2,5 +2,5 @@
 <%= item.name %>
 <% item.photos.each do |photo| %>
   <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fit %>
-  <%= link_to "See more", shopping_cart_item_path(item) %>
+  <%= link_to "See more", shopping_cart_item_path(@shopping_cart, item) %>
 <% end %>
