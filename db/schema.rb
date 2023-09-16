@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_035948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "added_by"
-    t.integer "bought", default: 0
+    t.string "bought", default: "0"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
     t.index ["shopping_cart_id"], name: "index_cart_items_on_shopping_cart_id"
   end

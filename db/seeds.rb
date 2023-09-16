@@ -91,7 +91,8 @@ puts "Cart members complete..."
 puts "Creating items"
 
 beer = Item.create!(
-  name: "Kirin Lager"
+  name: "Kirin Lager",
+  category: "drinks"
 )
 beer_photo_urls = ["https://products3.imgix.drizly.com/ci-kirin-lager-114156948320ecb9.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"]
 beer_photo_urls.each do |photo|
@@ -101,7 +102,8 @@ end
 
 
 soda = Item.create!(
-  name: "Coke Zero"
+  name: "Coke Zero",
+  category: "drinks"
 )
 soda_photo_urls = ["https://pics.walgreens.com/prodimg/416902/900.jpg"]
 soda_photo_urls.each do |photo|
@@ -111,7 +113,8 @@ end
 
 
 cocktail = Item.create!(
-  name: "Strong Zero"
+  name: "Strong Zero",
+  category: "drinks"
 )
 cocktail_photo_urls = ["https://www.wine-searcher.com/images/labels/63/09/11646309.jpg?width=260&height=260&fit=bounds&canvas=260,260"]
 cocktail_photo_urls.each do |photo|
