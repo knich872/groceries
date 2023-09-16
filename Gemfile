@@ -50,7 +50,6 @@ gem "sassc-rails"
 gem "bootstrap"
 gem 'pg_search'
 gem "cloudinary"
-gem "dotenv-rails", groups: %i[development test]
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
