@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :shopping_cart
-  enum bought: {remaining: "remaining", purchased: "purchased"}
+  # enum bought: {remaining: "remaining", purchased: "purchased"}
 
 
   def bought?
