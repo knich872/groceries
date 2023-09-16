@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
     if params[:query].present?
       @items = @items.search_by_keywords(params[:query])
     end
+    if params[:filter].present?
+      @items = @items.where(category: params[:filter])
+    end
   end
 
   def show
