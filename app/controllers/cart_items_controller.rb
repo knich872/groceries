@@ -1,14 +1,14 @@
 class CartItemsController < ApplicationController
 
-  def new
-    @cart_item = CartItem.new
-  end
-
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    # @cart_item.item = @item
-    # @cart_item.shopping_cart = @shopping_cart
+    @cart_item = CartItem.new()
+    @item = Item.find(params[:id])
+    @cart_item.item = @item
+    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    @cart_item.shopping_cart = @shopping_cart
     @cart_item.added_by = current_user.username
+    # @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart, added_by: current_user.username)
+    # @cart_item.save!
     if @cart_item.save
       redirect_to shopping_cart_path notice: "Item was successfully added!"
     else
@@ -28,6 +28,6 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought)
+    params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought, :added_by)
   end
 end

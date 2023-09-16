@@ -2,6 +2,10 @@
 <% @item.photos.each do |photo| %>
   <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
 <% end %>
-  <%#= simple_form_for [@item, @cart_item], html: { class: "border-bottom mb-3, pb-3" } do |f| %>
-    <%#= f.submit class: "btn" %>
-  <%# end %>
+<%= simple_form_for [@shopping_cart, @item, @cart_item] do |f| %>
+  <div class="form-inputs">
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Add this item to your cart", class: "btn btn-food" %>
+  </div>
+<% end %>
