@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  CATEGORIES = ["meats", "produce", "seafood", "drinks", "dairy", "grains", "canned", "frozen", "baking", "sauces", "cleaning", "hygiene", "other"]
+  # CATEGORIES = ["meats", "produce", "seafood", "drinks", "dairy", "grains", "canned", "frozen", "baking", "sauces", "cleaning", "hygiene", "other"]
   has_many :cart_items
   has_many :shopping_carts, through: :cart_items
   validates :name, presence: true, uniqueness: true

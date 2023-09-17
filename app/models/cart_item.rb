@@ -5,7 +5,7 @@ class CartItem < ApplicationRecord
 
 
   def bought?
-    bought == 1
+    bought == true
   end
 
   # def valid

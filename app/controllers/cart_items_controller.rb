@@ -21,6 +21,7 @@ class CartItemsController < ApplicationController
     # @shopping_cart = ShoppingCart.find(params[:id])
     @cart_item = CartItem.find(params[:id])
     @cart_item.bought?
+    @cart_item.bought_by = current_user.username
     @cart_item.update(cart_item_params)
     redirect_to shopping_cart_path(@cart_item.shopping_cart), notice: "Item was marked as purchased."
   end
@@ -28,6 +29,6 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought, :added_by)
+    params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought, :added_by, :bought_by)
   end
 end

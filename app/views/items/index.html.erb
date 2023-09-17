@@ -1,4 +1,9 @@
-<h1>These are the available items</h1>
+<div class="container">
+  <div class="row">
+    <h1>These are the available items</h1>
+    <%= link_to "Back to shopping cart", shopping_cart_path(@shopping_cart) %>
+  </div>
+</div>
 <%= render "shared/categories" %>
 <%= form_with url: shopping_cart_items_path, method: :get, class: "d-flex" do %>
   <%= text_field_tag :query,

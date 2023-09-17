@@ -1,5 +1,8 @@
-<h1>This is my shopping cart</h1>
 <div class="container">
+  <div>
+    <h1>This is my shopping cart</h1>
+    <%= link_to "Back to my shopping carts", shopping_carts_path(filter: current_user.id) %>
+  </div>
   <h3><%= @shopping_cart.name %></h3>
   <% unless current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
     <%#= link_to "Join", new_shopping_cart_cart_member_path(@shopping_cart), class: "btn btn-food" %>
@@ -22,36 +25,67 @@
   </ul>
   <br>
   <br>
-  <h5>Items in this cart</h5>
-  <ul>
-    <% @cart_items.each do |cart_item| %>
-      <% if cart_item.bought == false %>
-        <li>
-          <div class="container">
-            <div class="row">
-              <div class="d-flex">
-                <p><%= cart_item.item.name %></p>
-                <div>
-                <%#= image_tag(cart_item.photo), class: "food-pic" %>
-                <% cart_item.item.photos.each do |photo| %>
-                  <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
-                <% end %>
+  <div class="row d-flex">
+    <div class="col-lg-9">
+      <h5>Items in this cart</h5>
+      <ul>
+        <% @cart_items.each do |cart_item| %>
+          <% if cart_item.bought == false %>
+            <li>
+              <div class="container">
+                <div class="row">
+                  <div class="d-flex">
+                    <p><%= cart_item.item.name %></p>
+                    <div>
+                    <%#= image_tag(cart_item.photo), class: "food-pic" %>
+                    <% cart_item.item.photos.each do |photo| %>
+                      <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
+                    <% end %>
+                    </div>
+                    <p>Added by: <%= cart_item.added_by %></p>
+                    <%#= link_to "Buy this item", shopping_cart_cart_item_path(cart_item), class: "btn" %>
+                    <% unless cart_item.bought?%>
+                      <%= simple_form_for cart_item do |f| %>
+                        <%= f.input :bought, as: :hidden, input_html: { value: true } %>
+                        <%= f.input :bought_by, as: :hidden, input_html: { value: current_user.username } %>
+                        <%= f.submit 'Buy this item', class: 'btn' %>
+                      <% end %>
+                    <% end %>
+                  </div>
                 </div>
-                <p>Added by: <%= cart_item.added_by %></p>
-                <%#= link_to "Buy this item", shopping_cart_cart_item_path(cart_item), class: "btn" %>
-                <% unless cart_item.bought?%>
-                  <%= simple_form_for cart_item do |f| %>
-                    <%= f.input :bought, as: :hidden, input_html: { value: true } %>
-                    <%= f.submit 'Buy this item', class: 'btn' %>
-                  <% end %>
-                <% end %>
               </div>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-lg-3">
+    <h5>Items recently purchased</h5>
+      <ul>
+        <% @cart_items.each do |cart_item| %>
+          <% if cart_item.bought == true %>
+            <li>
+              <div class="container">
+                <div class="row">
+                  <div class="d-flex">
+                    <p><%= cart_item.item.name %></p>
+                    <div>
+                      <% cart_item.item.photos.each do |photo| %>
+                        <%= cl_image_tag(photo.key, width: 100, height: 100, crop: :fit) %>
+                      <% end %>
+                    </div>
+                    <div class="row d-flex">
+                      <p>Bought by: <%= cart_item.bought_by %><%= cart_item.updated_at.strftime(" on %m/%d at %I:%M%p") %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
   <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-food" %>
   <% if current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
     <%= link_to "Add a new item", new_shopping_cart_item_path(@shopping_cart), class: "btn btn-food" %>

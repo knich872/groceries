@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, photos: [])
+    params.require(:item).permit(:name, :category, photos: [])
   end
 
   def sanitize_page_params
