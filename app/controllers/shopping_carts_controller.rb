@@ -10,22 +10,13 @@ class ShoppingCartsController < ApplicationController
     if params[:filter].present?
       @shopping_carts = @shopping_carts.where(id: current_user.shopping_cart_ids)
     end
-    # raise
   end
 
   def show
     @users = User.all
     @cart_member = CartMember.new
-    # @cart_member.user = current_user
-    # @cart_member.shopping_cart = @shopping_cart
-    # if @cart_member.save
-    #   redirect_to @shopping_cart, notice: "You were successfully added!"
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
     @cart_items = @shopping_cart.cart_items
     @items = Item.all
-    # raise
   end
 
   def new

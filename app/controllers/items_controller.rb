@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    # raise
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     if params[:query].present?
       @items = @items.search_by_keywords(params[:query])
@@ -14,7 +13,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # raise
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     @item = Item.find(params[:id])
     @cart_item = CartItem.new

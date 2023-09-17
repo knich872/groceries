@@ -2,23 +2,19 @@ class CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new()
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
     @cart_item.item = @item
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     @cart_item.shopping_cart = @shopping_cart
     @cart_item.added_by = current_user.username
-    # @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart, added_by: current_user.username)
-    # @cart_item.save!
     if @cart_item.save
-      redirect_to shopping_cart_path notice: "Item was successfully added!"
+      redirect_to shopping_cart_path(@shopping_cart), notice: "Item was successfully added!"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    # raise
-    # @shopping_cart = ShoppingCart.find(params[:id])
     @cart_item = CartItem.find(params[:id])
     @cart_item.bought?
     @cart_item.bought_by = current_user.username
