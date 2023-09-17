@@ -62,7 +62,7 @@
     <div class="col-lg-3">
     <h5>Items recently purchased</h5>
       <ul>
-        <% @cart_items.each do |cart_item| %>
+        <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
           <% if cart_item.bought == true %>
             <li>
               <div class="container">
