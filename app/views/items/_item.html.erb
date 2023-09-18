@@ -1,6 +1,11 @@
-<%#= link_to "View this item", shopping_cart_item_path(@shopping_cart.id), class: "btn" %>
-<%= item.name %>
-<% item.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fit %>
-  <%= link_to "See more", shopping_cart_item_path(@shopping_cart, item) %>
-<% end %>
+<div class="col-lg-3 col-6">
+  <div class="card">
+    <% item.photos.each do |photo| %>
+    <div class="food-image">
+      <%= cl_image_tag(photo.key, width: 150, height: 200, crop: :fill, class: "rounded-2 d-block w-100") %>
+    </div>
+    <% end %>
+    <p class="mb-0"><%= item.name %></p>
+    <%= link_to "See more", shopping_cart_item_path(@shopping_cart, item), class: "btn btn-food" %>
+  </div>
+</div>
