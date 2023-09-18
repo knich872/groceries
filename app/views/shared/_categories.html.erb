@@ -44,9 +44,19 @@
       <div class="">Baking</div>
     </div>
   <% end %>
+  <%= link_to shopping_cart_items_path(filter: 'spices'), class: '' do %>
+    <div class=""><i class="fa-solid fa-3x fa-leaf"></i>
+      <div class="">Spices</div>
+    </div>
+  <% end %>
   <%= link_to shopping_cart_items_path(filter: 'sauces'), class: '' do %>
     <div class=""><i class="fa-solid fa-3x fa-bottle-water"></i>
       <div class="">Sauces</div>
+    </div>
+  <% end %>
+  <%= link_to shopping_cart_items_path(filter: 'snacks'), class: '' do %>
+    <div class=""><i class="fa-solid fa-3x fa-stroopwafel"></i>
+      <div class="">Snacks</div>
     </div>
   <% end %>
   <%= link_to shopping_cart_items_path(filter: 'cleaning'), class: '' do %>

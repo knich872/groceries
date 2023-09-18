@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :shopping_carts, through: :cart_items
   validates :name, presence: true, uniqueness: true
   # validates :category, inclusion: { in: CATEGORIES }
-  enum category: [:meats, :produce, :seafood, :drinks, :dairy, :grains, :canned, :frozen, :baking, :sauces, :cleaning, :hygiene, :other]
+  enum category: [:meats, :produce, :seafood, :drinks, :dairy, :grains, :canned, :frozen, :baking, :spices, :sauces, :snacks, :cleaning, :hygiene, :other]
   has_many_attached :photos
 
   include PgSearch::Model
