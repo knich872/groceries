@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
       @items = Item.search_by_keywords(params[:query])
     end
     if params[:filter].present?
-      @items = @items.where(category: params[:filter])
+      @items = Item.where(category: params[:filter])
     end
   end
 
