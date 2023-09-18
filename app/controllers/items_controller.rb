@@ -7,9 +7,10 @@ class ItemsController < ApplicationController
     if params[:query].present?
       @items = Item.search_by_keywords(params[:query])
     end
-    if params[:filter].present?
-      @items = Item.where(category: params[:filter])
+    if params[:refine].present?
+      @items = Item.where(category: params[:refine])
     end
+    @items
   end
 
   def show
