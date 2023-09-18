@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     @items = Item.all
     @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     if params[:query].present?
-      @items = @items.search_by_keywords(params[:query])
+      @items = Item.search_by_keywords(params[:query])
     end
     if params[:filter].present?
       @items = @items.where(category: params[:filter])
