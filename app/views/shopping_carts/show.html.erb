@@ -28,36 +28,28 @@
   <div class="row d-flex">
     <div class="col-lg-9">
       <h5>Items in this cart</h5>
-      <ul>
+      <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.bought == false %>
-            <li>
-              <div class="container">
-                <div class="row">
-                  <div class="d-flex">
-                    <p><%= cart_item.item.name %></p>
-                    <div>
-                    <%#= image_tag(cart_item.photo), class: "food-pic" %>
+                <div class="col-lg-3 col-6 mb-4">
+                  <div class="card">
                     <% cart_item.item.photos.each do |photo| %>
-                      <%= cl_image_tag(photo.key, width: 400, height: 400, crop: :fit) %>
+                      <%= cl_image_tag(photo.key, height: 0.25, crop: :scale) %>
                     <% end %>
-                    </div>
-                    <p>Added by: <%= cart_item.added_by %></p>
-                    <%#= link_to "Buy this item", shopping_cart_cart_item_path(cart_item), class: "btn" %>
+                    <p class="mb-0"><%= cart_item.item.name %></p>
+                    <p class="mb-0">Added by: <%= cart_item.added_by %></p>
                     <% unless cart_item.bought?%>
-                      <%= simple_form_for cart_item do |f| %>
+                      <%= simple_form_for cart_item, html: { class: "buy-form"} do |f| %>
                         <%= f.input :bought, as: :hidden, input_html: { value: true } %>
                         <%= f.input :bought_by, as: :hidden, input_html: { value: current_user.username } %>
-                        <%= f.submit 'Buy this item', class: 'btn' %>
+                        <%= f.submit 'Buy this item', class: 'btn btn-food' %>
                       <% end %>
                     <% end %>
                   </div>
                 </div>
-              </div>
-            </li>
           <% end %>
         <% end %>
-      </ul>
+      </div>
     </div>
     <div class="col-lg-3">
     <h5>Items recently purchased</h5>
