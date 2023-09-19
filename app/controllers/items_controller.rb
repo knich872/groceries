@@ -3,12 +3,12 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    # @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     if params[:query].present?
       @items = Item.search_by_keywords(params[:query])
     end
-    if params[:refine].present?
-      @items = Item.where(category: params[:refine])
+    if params[:filter].present?
+      @items = Item.where(category: params[:filter])
     end
     @items
   end

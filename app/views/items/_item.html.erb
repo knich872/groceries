@@ -6,6 +6,6 @@
     </div>
     <% end %>
     <p class="mb-0"><%= item.name %></p>
-    <%= link_to "See more", shopping_cart_item_path(@shopping_cart, item), class: "btn btn-food" %>
+    <%= link_to "See more", item_path(item), class: "btn btn-food" %>
   </div>
 </div>
