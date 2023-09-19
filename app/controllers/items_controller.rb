@@ -21,15 +21,18 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    @shopping_carts = ShoppingCart.find(current_user.shopping_cart_ids)
+    @cart_item = CartItem.new
   end
 
   def create
     @item = Item.new(item_params)
-    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    @shopping_cart = ShoppingCart.find(params[:item][:shopping_carts])
+    # raise
+    @cart_item = CartItem.new
     if @item.save
       @cart_item = CartItem.create(item: @item, shopping_cart: @shopping_cart, added_by: current_user.username)
-      redirect_to @shopping_cart, notice: "New item was successfully added!"
+      redirect_to shopping_cart_path(@shopping_cart), notice: "New item was successfully added!"
     else
       render :new, status: :unprocessable_entity
     end
