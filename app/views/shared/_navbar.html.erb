@@ -1,39 +1,55 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">GrocerEase</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav justify-content-between">
       <% if user_signed_in? %>
+        <div class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <%= link_to "My Shopping Carts", shopping_carts_path(filter: current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <%= link_to "All Shopping Carts", shopping_carts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Search Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Meats", items_path(filter: 'meats'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Produce", items_path(filter: 'produce'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Seafood", items_path(filter: 'seafood'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Drinks", items_path(filter: 'drinks'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Dairy", items_path(filter: 'dairy'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Grains", items_path(filter: 'grains'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Canned", items_path(filter: 'canned'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Frozen", items_path(filter: 'frozen'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Baking", items_path(filter: 'baking'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Spices", items_path(filter: 'spices'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Sauces", items_path(filter: 'sauces'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Snacks", items_path(filter: 'snacks'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Cleaning", items_path(filter: 'cleaning'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Hygiene", items_path(filter: 'hygiene'), class: 'dropdown-item' %></li>
+            <li><%= link_to "Other", items_path(filter: 'other'), class: 'dropdown-item' %></li>
+          </ul>
         </li>
         <li class="nav-item active">
           <%= link_to "Log out",  destroy_user_session_path, data: { turbo_method: "delete" }, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+        </div>
+        <div class="navbar-nav">
         <li class="nav-item">
-          <%= current_user.username %>
+            <%= current_user.username %>
         </li>
+        </div>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item navbar-current-user">
             <%= link_to "Login", new_user_session_path, class: "nav-link active" %>
           </li>
         <% end %>
