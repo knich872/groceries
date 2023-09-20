@@ -1,5 +1,5 @@
-<h1>Welcome to GrocerEase <%= current_user.username %>!</h1>
 <% if user_signed_in? %>
+<h1>Welcome to GrocerEase <%= current_user.username %>!</h1>
   <div class="row justify-content-between my-4">
     <div class="card text-center card-solid" style="width: 18rem;">
       <div class="card-body">
@@ -45,4 +45,6 @@
       </div>
     <% end %>
   </div>
+<% else %>
+<h1>Welcome to GrocerEase!</h1>
 <% end %>
