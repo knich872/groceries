@@ -1,11 +1,9 @@
-<div class="container">
+<div class="mt-4">
   <div>
-    <h1>This is my shopping cart</h1>
-    <%= link_to "Back to my shopping carts", shopping_carts_path(filter: current_user.id) %>
+    <h1><%= @shopping_cart.name %></h1>
+    <%#= link_to "Back to my shopping carts", shopping_carts_path(filter: current_user.id) %>
   </div>
-  <h3><%= @shopping_cart.name %></h3>
   <% unless current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
-    <%#= link_to "Join", new_shopping_cart_cart_member_path(@shopping_cart), class: "btn btn-food" %>
     <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>
       <div class="form-inputs">
       </div>
@@ -15,14 +13,14 @@
     <% end %>
   <% end %>
   <h5>Members in this cart</h2>
-  <ul>
+  <div class="d-flex align-items-start">
     <% @shopping_cart.cart_members.each do |member| %>
       <% user = member.user_id %>
-      <li>
-        <%= @users.find(user).username %>
-      </li>
+      <p class="my-auto px-2">
+        / <%= @users.find(user).username %>
+      </p>
     <% end %>
-  </ul>
+  </div>
   <br>
   <br>
   <div class="row d-flex">
@@ -30,15 +28,15 @@
       <%= link_to "Add a new item", new_item_path, class: "btn btn-food" %>
       <%= link_to "Search for items", items_path, class: "btn btn-food" %>
     <% end %>
-    <div class="col-lg-9">
+    <div class="col-lg-9 px-0">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.bought == false %>
             <div class="col-lg-3 col-6">
-              <div class="card">
+              <div class="card mx-4">
                 <% cart_item.item.photos.each do |photo| %>
-                  <%= cl_image_tag(photo.key, height: 0.25, crop: :scale, class: "img-fluid") %>
+                  <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>
                 <% end %>
                 <p class="mb-0"><%= cart_item.item.name %></p>
                 <p class="mb-0">Added by: <%= cart_item.added_by %></p>
