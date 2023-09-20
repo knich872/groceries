@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create] do
-    resources :cart_items, only: [:update, :create]
+    resources :cart_items, only: [:create]
   end
+
+  resources :cart_items, only: [:update]
 
   # Defines the root path route ("/")
   # root "articles#index"

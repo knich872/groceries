@@ -27,7 +27,7 @@ class ShoppingCartsController < ApplicationController
     @shopping_cart = ShoppingCart.new(shopping_cart_params)
     if @shopping_cart.save
       @cart_member = CartMember.create(user: current_user, shopping_cart: @shopping_cart)
-      redirect_to shopping_carts_path(@shopping_cart), notice: "Shopping cart was successfully created!"
+      redirect_to shopping_cart_path(@shopping_cart), notice: "Shopping cart was successfully created!"
     else
       render :new, status: :unprocessable_entity
     end
