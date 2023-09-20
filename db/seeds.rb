@@ -38,15 +38,15 @@ puts "Users complete!"
 puts "Creating shopping carts"
 
 cart = ShoppingCart.create!(
-  name: "My cart",
+  name: "Tester's cart",
 )
 
 cartB = ShoppingCart.create!(
-  name: "My brother's cart",
+  name: "Tester's brother",
   )
 
 cartS = ShoppingCart.create!(
-  name: "My sister's cart",
+  name: "Tester's sister",
   )
 
 puts "Shopping carts complete..."
@@ -91,10 +91,10 @@ puts "Cart members complete..."
 puts "Creating items"
 
 beer = Item.create!(
-  name: "Kirin Lager",
+  name: "Kirin Nodogoshi 350ml",
   category: "drinks"
 )
-beer_photo_urls = ["https://products3.imgix.drizly.com/ci-kirin-lager-114156948320ecb9.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20"]
+beer_photo_urls = ["https://static.wixstatic.com/media/9fb520_f2688b0106ee42ed8f3494dfbdb10293~mv2.jpeg/v1/fill/w_416,h_416,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9fb520_f2688b0106ee42ed8f3494dfbdb10293~mv2.jpeg"]
 beer_photo_urls.each do |photo|
   file = URI.open(photo)
   beer.photos.attach(io: file, filename: "photo_1.png", content_type: "image/png")
@@ -102,7 +102,7 @@ end
 
 
 soda = Item.create!(
-  name: "Coke Zero",
+  name: "Coke Zero 500ml",
   category: "drinks"
 )
 soda_photo_urls = ["https://pics.walgreens.com/prodimg/416902/900.jpg"]
@@ -113,7 +113,7 @@ end
 
 
 cocktail = Item.create!(
-  name: "Strong Zero",
+  name: "Strong Zero Double Lemon 350ml",
   category: "drinks"
 )
 cocktail_photo_urls = ["https://www.wine-searcher.com/images/labels/63/09/11646309.jpg?width=260&height=260&fit=bounds&canvas=260,260"]
