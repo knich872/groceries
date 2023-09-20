@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @shopping_carts = ShoppingCart.find(current_user.shopping_cart_ids)
   end
 
   def new

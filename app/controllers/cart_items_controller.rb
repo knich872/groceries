@@ -4,7 +4,7 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.new()
     @item = Item.find(params[:item_id])
     @cart_item.item = @item
-    # @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
+    @shopping_cart = ShoppingCart.find(params[:cart_item][:shopping_cart_id])
     @cart_item.shopping_cart = @shopping_cart
     @cart_item.added_by = current_user.username
     if @cart_item.save
