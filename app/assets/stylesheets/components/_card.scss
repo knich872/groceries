@@ -9,13 +9,13 @@
 }
 
 .card-round {
-  border: solid 4px darkgrey;
-  border-radius: 30px;
+  border: solid 4px darkgrey !important;
+  border-radius: 30px !important;
 }
 
 .card-round-dashed {
-  border: dashed 4px rgb(225, 225, 225);
-  border-radius: 30px;
+  border: dashed 4px rgb(225, 225, 225) !important;
+  border-radius: 30px !important;
 }
 
 .card-title {
@@ -32,4 +32,16 @@
   border: 1px solid lightgrey;
   height: 40vh;
   width: 30vh;
+}
+
+@media(max-width: 400) {
+  .card-round {
+    margin: 40px auto;
+  }
+  .card-round-dashed {
+    margin: 40px auto;
+  }
+  .card {
+    margin-left: 4px !important;
+  }
 }

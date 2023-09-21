@@ -88,3 +88,9 @@
   justify-content: center;
   margin: auto;
 }
+
+@media(max-width: 400) {
+  .btn-nav {
+    justify-content: center;
+  }
+}
