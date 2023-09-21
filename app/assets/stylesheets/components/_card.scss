@@ -32,6 +32,23 @@
   border: 1px solid lightgrey;
   height: 40vh;
   width: 30vh;
+  margin: 0 1vw 24px 1vw;
+}
+
+.bought {
+  max-height: 150px;
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+  }
+
+  .card-body {
+    padding: 4px;
+  }
 }
 
 @media(max-width: 400) {
@@ -40,8 +57,5 @@
   }
   .card-round-dashed {
     margin: 40px auto;
-  }
-  .card {
-    margin-left: 4px !important;
   }
 }

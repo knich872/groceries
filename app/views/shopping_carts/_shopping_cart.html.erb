@@ -1,10 +1,10 @@
-<div class="card
+<div class="card mx-auto my-4
   <% if current_user.shopping_cart_ids.include?(shopping_cart.id) %>
   card-round
   <% else %>
   card-round-dashed
-  " style="width: 18rem;">
   <% end %>
+  " style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title pb-2"><%= shopping_cart.name %></h5>
     <h6 class="card-subtitle mb-4 text-muted"><%= shopping_cart.created_at.strftime("Created on %m/%d at %I:%M%p") %></h6>

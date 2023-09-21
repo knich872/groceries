@@ -24,8 +24,8 @@
       <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.bought == false %>
-            <div class="col-lg-3 col-6">
-              <div class="card mx-4 mb-4">
+            <div class="col-lg-4 col-6 cart-item">
+              <div class="card">
                 <% cart_item.item.photos.each do |photo| %>
                   <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>
                 <% end %>
@@ -47,7 +47,7 @@
       <ul class="p-0">
         <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
           <% if cart_item.bought == true %>
-            <div class="card mb-3" style="max-height: 150px;">
+            <div class="card mb-3 bought">
               <div class="row g-0">
                 <div class="col-md-4">
                   <% cart_item.item.photos.each do |photo| %>
