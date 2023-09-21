@@ -19,6 +19,9 @@
       <%= link_to "Add a new item", new_item_path, class: "btn btn-nav" %>
       <%= link_to "Search for items", items_path, class: "btn btn-nav" %>
       <%= link_to "Back to my shopping carts", shopping_carts_path, class: "btn btn-nav" %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-lg-9 px-0">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap">
@@ -43,30 +46,30 @@
       </div>
     </div>
     <div class="col-lg-3">
-    <h5>Recently purchased</h5>
-      <ul class="p-0">
-        <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
-          <% if cart_item.bought == true %>
-            <div class="card mb-3 bought">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <% cart_item.item.photos.each do |photo| %>
-                    <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
-                  <% end %>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h6 class="card-title"><%= cart_item.item.name %></h6>
-                    <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
-                    <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
+      <h5>Recently purchased</h5>
+        <ul class="p-0">
+          <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
+            <% if cart_item.bought == true %>
+              <div class="card mb-3 bought">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <% cart_item.item.photos.each do |photo| %>
+                      <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h6 class="card-title"><%= cart_item.item.name %></h6>
+                      <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
+                      <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </div>
+        </ul>
+      </div>
     <% else %>
       <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>
         <div class="form-inputs">

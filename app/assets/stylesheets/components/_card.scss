@@ -18,21 +18,23 @@
   border-radius: 30px !important;
 }
 
-.card-title {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
+// .card-title {
+//   font-weight: bold;
+//   font-size: 1.5rem;
+// }
 
-.card-body {
-  font-weight: bolder;
-  font-size: 1rem;
-}
+// .card-body {
+//   font-weight: bolder;
+//   font-size: 1rem;
+// }
 
-.card {
-  border: 1px solid lightgrey;
-  height: 40vh;
-  width: 30vh;
-  margin: 0 1vw 24px 1vw;
+.cart-item {
+  .card {
+    border: 1px solid lightgrey;
+    height: 40vh;
+    width: 30vh;
+    margin: 0 1vw 24px 1vw;
+  }
 }
 
 .bought {
@@ -57,5 +59,17 @@
   }
   .card-round-dashed {
     margin: 40px auto;
+  }
+  .bought {
+    max-height: 150px;
+    width: 90vw;
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: lighter;
+    }
+    .card-text {
+      font-size: 0.9rem;
+    }
   }
 }
