@@ -11,7 +11,21 @@
   display: flex;
   justify-content: center;
   margin: auto;
-  width: 200px;
+  width: 150px;
+}
+
+.btn-nav {
+  background: $candy-color;
+  box-shadow: 5px 5px 10px rgb(159, 159, 159);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px grey;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+  width: 240px;
 }
 
 .btn-sign-up {

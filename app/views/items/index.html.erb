@@ -13,8 +13,8 @@
     %>
   <%= submit_tag "Find", name: "", class: "btn" %>
 <% end %>
-<% @items.each do |item| %>
-  <div class="row d-flex flex-wrap">
+<div class="row d-flex flex-wrap">
+  <% @items.each do |item| %>
     <%= render item %>
-  </div>
-<% end %>
+  <% end %>
+</div>

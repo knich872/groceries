@@ -3,15 +3,6 @@
     <h1><%= @shopping_cart.name %></h1>
     <%#= link_to "Back to my shopping carts", shopping_carts_path(filter: current_user.id) %>
   </div>
-  <% unless current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
-    <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>
-      <div class="form-inputs">
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Join this cart", class: "btn btn-food" %>
-      </div>
-    <% end %>
-  <% end %>
   <h5>Members in this cart</h2>
   <div class="d-flex align-items-start">
     <% @shopping_cart.cart_members.each do |member| %>
@@ -22,31 +13,29 @@
     <% end %>
   </div>
   <br>
-  <br>
   <div class="row d-flex">
     <% if current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
-      <%= link_to "Add a new item", new_item_path, class: "btn btn-food" %>
-      <%= link_to "Search for items", items_path, class: "btn btn-food" %>
-    <% end %>
+    <div class="row justify-content-start mb-4">
+      <%= link_to "Add a new item", new_item_path, class: "btn btn-nav" %>
+      <%= link_to "Search for items", items_path, class: "btn btn-nav" %>
+      <%= link_to "Back to my shopping carts", shopping_carts_path, class: "btn btn-nav" %>
     <div class="col-lg-9 px-0">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.bought == false %>
             <div class="col-lg-3 col-6">
-              <div class="card mx-4">
+              <div class="card mx-4 mb-4">
                 <% cart_item.item.photos.each do |photo| %>
                   <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>
                 <% end %>
-                <p class="mb-0"><%= cart_item.item.name %></p>
-                <p class="mb-0">Added by: <%= cart_item.added_by %></p>
-                <% unless cart_item.bought?%>
+                <p class="mb-0 pb-4 text-truncate"><%= cart_item.item.name %></p>
+                <p class="mb-0 pb-1">Added by: <%= cart_item.added_by %></p>
                   <%= simple_form_for cart_item, html: { class: "buy-form"} do |f| %>
                     <%= f.input :bought, as: :hidden, input_html: { value: true } %>
                     <%= f.input :bought_by, as: :hidden, input_html: { value: current_user.username } %>
                     <%= f.submit 'Buy this item', class: 'btn btn-food' %>
                   <% end %>
-                <% end %>
               </div>
             </div>
           <% end %>
@@ -54,7 +43,7 @@
       </div>
     </div>
     <div class="col-lg-3">
-    <h5>Items recently purchased</h5>
+    <h5>Recently purchased</h5>
       <ul class="p-0">
         <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
           <% if cart_item.bought == true %>
@@ -78,6 +67,14 @@
         <% end %>
       </ul>
     </div>
+    <% else %>
+      <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>
+        <div class="form-inputs">
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Join this cart", class: "btn btn-nav" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <%= link_to "Back to shopping carts", shopping_carts_path, class: "btn btn-food" %>
 </div>
