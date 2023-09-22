@@ -14,11 +14,6 @@
       <div class="">Seafood</div>
     </div>
   <% end %>
-  <%= link_to items_path(filter: 'drinks'), class: '' do %>
-    <div class=""><i class="fa-solid fa-3x fa-glass-water"></i>
-      <div class="">Drinks</div>
-    </div>
-  <% end %>
   <%= link_to items_path(filter: 'dairy'), class: '' do %>
     <div class=""><i class="fa-solid fa-3x fa-cheese"></i>
       <div class="">Dairy</div>
@@ -52,6 +47,11 @@
   <%= link_to items_path(filter: 'sauces'), class: '' do %>
     <div class=""><i class="fa-solid fa-3x fa-bottle-water"></i>
       <div class="">Sauces</div>
+    </div>
+  <% end %>
+  <%= link_to items_path(filter: 'drinks'), class: '' do %>
+    <div class=""><i class="fa-solid fa-3x fa-glass-water"></i>
+      <div class="">Drinks</div>
     </div>
   <% end %>
   <%= link_to items_path(filter: 'snacks'), class: '' do %>

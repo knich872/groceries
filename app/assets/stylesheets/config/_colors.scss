@@ -23,3 +23,12 @@ $green-edges: linear-gradient(270deg, rgba(22, 128, 64,.3), rgba(255,0,0,0) 45%)
 linear-gradient(180deg, rgba(22, 128, 64,.3), rgba(0,255,0,0) 45%),
 linear-gradient(360deg, rgba(22, 128, 64,.3), rgba(0,0,255,0) 45%),
 linear-gradient(90deg, rgba(22, 128, 64,.3), rgba(0,0,255,0) 45%);
+$kale-green: #758650;
+$lime-green: #B5C267;
+$parmesan-yellow: #FFE27C;
+$honey-orange: #E8B634;
+$salty-white: #F8F9F8;
+$almond-beige: #C9B6A1;
+$healthy-gradient: linear-gradient(217deg, $kale-green, rgba(255,0,0,0) 70.71%),
+linear-gradient(127deg, $almond-beige, rgba(0,255,0,0) 70.71%),
+linear-gradient(336deg, $honey-orange, rgba(0,0,255,0) 70.71%);
