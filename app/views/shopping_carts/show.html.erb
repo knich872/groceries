@@ -15,14 +15,14 @@
   <br>
   <div class="row d-flex">
     <% if current_user.shopping_cart_ids.include?(@shopping_cart.id) %>
-    <div class="row justify-content-start mb-4">
+    <div class="row nav-links mb-4">
       <%= link_to "Add a new item", new_item_path, class: "btn btn-nav" %>
       <%= link_to "Search for items", items_path, class: "btn btn-nav" %>
       <%= link_to "Back to my shopping carts", shopping_carts_path, class: "btn btn-nav" %>
     </div>
   </div>
   <div class="row mx-1">
-    <div class="col-lg-9 px-0">
+    <div class="col-lg-9 px-0 mb-4">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
@@ -45,7 +45,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-3 col-12 px-0">
+    <div class="col-lg-3 col-12 px-0 mb-4">
       <h5>Recently purchased</h5>
         <ul class="p-0">
           <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
