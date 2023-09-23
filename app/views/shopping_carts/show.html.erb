@@ -27,7 +27,7 @@
       <div class="row d-flex flex-wrap">
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.bought == false %>
-            <div class="col-lg-4 col-6 cart-item">
+            <div class="col-lg-4 col-6 cart-item-card">
               <div class="card">
                 <% cart_item.item.photos.each do |photo| %>
                   <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>

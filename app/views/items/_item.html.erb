@@ -1,4 +1,4 @@
-<div class="card m-4">
+<div class="item-card">
   <% item.photos.each do |photo| %>
     <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>
   <% end %>
