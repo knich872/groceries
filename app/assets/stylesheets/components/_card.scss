@@ -62,6 +62,10 @@
   }
 }
 
+.cart-index-div {
+  justify-content: space-between;
+}
+
 @media (max-width: 500px) {
 
   .card-round {
@@ -80,7 +84,7 @@
     padding: 0;
     margin: 24px 0;
     width: 400px;
-    height: 540px;
+    height: 350px;
   }
 
   .bought {
@@ -96,4 +100,7 @@
     }
   }
 
+  .cart-index-div {
+    justify-content: center;
+  }
 }
