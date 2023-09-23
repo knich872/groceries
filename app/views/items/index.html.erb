@@ -5,7 +5,7 @@
   </div>
 </div>
 <%= render "shared/categories" %>
-<%= form_with url: items_path, method: :get, class: "d-flex" do %>
+<%= form_with url: items_path, method: :get, class: "d-flex my-2" do %>
   <%= text_field_tag :query,
         params[:query],
         class: "form-control",

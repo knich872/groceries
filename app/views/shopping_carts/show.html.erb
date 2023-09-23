@@ -21,7 +21,7 @@
       <%= link_to "Back to my shopping carts", shopping_carts_path, class: "btn btn-nav" %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mx-1">
     <div class="col-lg-9 px-0">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap">
@@ -45,19 +45,19 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-12 px-0">
       <h5>Recently purchased</h5>
         <ul class="p-0">
           <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
             <% if cart_item.bought == true %>
               <div class="card mb-3 bought">
                 <div class="row g-0">
-                  <div class="col-md-4">
+                  <div class="col-4">
                     <% cart_item.item.photos.each do |photo| %>
                       <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
                     <% end %>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-8">
                     <div class="card-body">
                       <h6 class="card-title"><%= cart_item.item.name %></h6>
                       <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
