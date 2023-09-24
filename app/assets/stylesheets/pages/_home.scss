@@ -8,6 +8,36 @@
   padding-right: 12px;
 }
 
+.home-page {
+  background-image: url("https://images.pexels.com/photos/319798/pexels-photo-319798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.page-frame-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-frame-header {
+  background-color: $kale-green;
+  padding: 16px;
+}
+
+.page-frame-body {
+  flex-grow: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.page-frame-footer {
+  background-color: $kale-green;
+  padding: 16px;
+}
+
 @media (max-width: 500px) {
 
   .container-fluid {
