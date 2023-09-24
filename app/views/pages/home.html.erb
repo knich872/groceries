@@ -1,8 +1,20 @@
 <div class="home-page">
   <% if user_signed_in? %>
-  <h1>Welcome to GrocerEase <%= current_user.username %>!</h1>
-    <div class="row cart-index-div my-4">
-      <div class="card text-center card-solid my-4" style="width: 18rem;">
+  <h1 class="home-text">Welcome to GrocerEase <%= current_user.username %>!</h1>
+  <h1 class="home-text">Here are your shopping carts</h1>
+  <div class="row justify-content-between py-4">
+    <% @shopping_carts.each do |shopping_cart| %>
+      <%= render shopping_cart %>
+    <% end %>
+  </div>
+  <% else %>
+  <h1 class="home-text">Welcome to GrocerEase!</h1>
+  <% end %>
+</div>
+
+
+    <%# <div class="row cart-index-div my-4">
+      <div class="card home-card text-center card-solid my-4" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">New</h5>
           <i class="fa-solid fa-cart-plus fa-4x"></i>
@@ -10,9 +22,9 @@
         </div>
         <div class="align-items-center">
           <%= link_to "GO", new_shopping_cart_path, class: "btn btn-circle" %>
-        </div>
+        <%# </div>
       </div>
-      <div class="card text-center card-solid my-4" style="width: 18rem;">
+      <div class="card home-card text-center card-solid my-4" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Join</h5>
           <i class="fa-solid fa-cart-arrow-down fa-4x py-2"></i>
@@ -20,30 +32,26 @@
         </div>
         <div class="align-items-center">
           <%= link_to "GO", shopping_carts_path, class: "btn btn-circle" %>
-        </div>
+        <%# </div>
       </div>
-      <div class="card text-center
-      <% if current_user.shopping_cart_ids.empty? %>
-      card-dashed
-      <% else %>
-      card-solid
-      <% end %>
-      my-4" style="width: 18rem;">
-        <div class="card-body text-muted">
+      <div class="card home-card text-center %>
+      <%# if current_user.shopping_cart_ids.empty? %>
+      <%# card-dashed %>
+      <%# else %>
+      <%# card-solid %>
+      <%# end %>
+      <%# my-4" style="width: 18rem;"> %>
+        <%# <div class="card-body text-muted">
           <h5 class="card-title">View</h5>
           <i class="fa-solid fa-cart-shopping fa-4x py-2"></i>
           <p class="card-text">See all your shopping carts.</p>
         </div>
-        <div class="align-items-center">
-        <% if current_user.shopping_cart_ids.empty? %>
-        <%= link_to "GO", root_path, class: "btn btn-dashed" %>
-        <% else %>
-        <%= link_to "GO", shopping_carts_path(filter: current_user.id), class: "btn btn-circle" %>
-        <% end %>
-        </div>
+        <div class="align-items-center"> %>
+        <%# if current_user.shopping_cart_ids.empty? %>
+        <%#= link_to "GO", root_path, class: "btn btn-dashed" %>
+        <%# else %>
+        <%#= link_to "GO", shopping_carts_path(filter: current_user.id), class: "btn btn-circle" %>
+        <%# end %>
+        <%# </div>
       </div>
-    </div>
-  <% else %>
-  <h1>Welcome to GrocerEase!</h1>
-  <% end %>
-</div>
+    </div> %>

@@ -13,6 +13,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  padding-top: 8px;
+}
+
+.home-text {
+  display: flex;
+  justify-content: center;
+  text-shadow: 1px 1px 5px white;
+  padding: 8px;
 }
 
 .page-frame-content {
@@ -31,6 +39,7 @@
   flex-grow: 1;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 0;
 }
 
 .page-frame-footer {
@@ -43,5 +52,9 @@
   .container-fluid {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .home-page {
+    height: 200vh;
   }
 }
