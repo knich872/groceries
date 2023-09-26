@@ -25,10 +25,20 @@
   width: 240px;
 }
 
-.btn-sign-up {
+.btn-login {
   border-color: lightgray;
   border: 2px;
   box-shadow: 5px 5px 10px rgb(159, 159, 159);
+  height: 100px;
+  width: 200px;
+  font-size: 3rem;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: black;
+  display: flex;
+  border-radius: 15px;
+  background: lightgrey;
 }
 
 .btn-large {
