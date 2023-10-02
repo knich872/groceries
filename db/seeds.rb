@@ -35,6 +35,7 @@ sister = User.create!(
 )
 
 puts "Users complete!"
+
 puts "Creating shopping carts"
 
 cart = ShoppingCart.create!(
@@ -50,6 +51,7 @@ cartS = ShoppingCart.create!(
   )
 
 puts "Shopping carts complete..."
+
 puts "Creating cart members"
 
 member = CartMember.create!(
@@ -88,6 +90,7 @@ member7 = CartMember.create!(
 )
 
 puts "Cart members complete..."
+
 puts "Creating items"
 
 beer = Item.create!(
@@ -169,4 +172,5 @@ drink7 = CartItem.create!(
 )
 
 puts "Cart items complete..."
+
 puts "All done!"
