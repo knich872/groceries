@@ -8,14 +8,14 @@
   <div class="card-body">
     <h5 class="card-title pb-2"><%= shopping_cart.name %></h5>
     <h6 class="card-subtitle mb-4 text-muted"><%= shopping_cart.created_at.strftime("Created on %m/%d at %I:%M%p") %></h6>
-    <p class="card-text mb-2 pb-4">This shopping cart has <%= shopping_cart.cart_members.count %> members</p>
+    <p class="card-text mb-2 pb-4">This shopping cart has <%= pluralize shopping_cart.cart_members.count, "member" %></p>
     <% item_count = [] %>
     <% shopping_cart.cart_items.each do |cart_item| %>
       <% unless cart_item.bought? %>
         <% item_count << cart_item %>
       <% end %>
     <% end %>
-    <p class="card-text mb-2 pb-4"><%= item_count.count %> items in this cart</p>
+    <p class="card-text mb-2 pb-4"><%= pluralize item_count.count, "item" %> in this cart</p>
     <% if current_user.shopping_cart_ids.include?(shopping_cart.id) %>
       <%= link_to "View cart", shopping_cart_path(shopping_cart), class: "btn btn-large btn-food" %>
     <% else %>

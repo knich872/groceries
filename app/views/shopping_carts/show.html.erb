@@ -35,7 +35,7 @@
                 <p class="mb-0 pb-4 text-truncate"><%= cart_item.item.name %></p>
                 <p class="mb-0 pb-1">Added by: <%= cart_item.added_by %></p>
                   <%= simple_form_for cart_item, html: { class: "buy-form"} do |f| %>
-                    <%= f.input :bought, as: :hidden, input_html: { value: true } %>
+                    <%= f.check_box :bought, input_html: { value: true } %>
                     <%= f.input :bought_by, as: :hidden, input_html: { value: current_user.username } %>
                     <%= f.submit 'Buy this item', class: 'btn btn-food' %>
                   <% end %>

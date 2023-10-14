@@ -1,7 +1,11 @@
 <div class="home-page row d-flex justify-content-center">
   <% if user_signed_in? %>
   <h1 class="home-text">Welcome to GrocerEase <%= current_user.username %>!</h1>
-  <h1 class="home-text">Here are your shopping carts</h1>
+  <% if current_user.shopping_cart_ids.size != 0 %>
+    <h1 class="home-text">Here are your shopping carts</h1>
+  <% else %>
+    <%= link_to "Create a new shopping cart", new_shopping_cart_path, class: "btn" %>
+  <% end %>
   <div class="row justify-content-between py-4">
     <% @shopping_carts.each do |shopping_cart| %>
       <%= render shopping_cart %>
