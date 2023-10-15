@@ -41,6 +41,28 @@
   background: lightgrey;
 }
 
+.home-login {
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  text-shadow: 0 0 4px #0ebac5;
+  transition: color 0.5s, transform 0.2s, background-color 0.2s;
+  border-radius: 20px;
+  height: 20vh;
+  width: 30vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 0 20px #0ebac5;
+
+  &:hover {
+    background-color: $offwhite;
+    box-shadow: 0 0 20px #0ec573;
+    text-shadow: 0 0 4px #0ec573;
+
+  }
+}
+
 .btn-large {
   width: 150px;
   border-radius: 4px;
