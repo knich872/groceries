@@ -30,7 +30,9 @@ export default class extends Controller {
   }
 
   purchase() {
-
+    purchaseArray.forEach((url) => {
+      fetch(url).then(response => response.json()).then(console.log(response));
+    });
   }
 }
 
