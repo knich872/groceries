@@ -42,7 +42,8 @@
                   <% end %>
               </div>
               <input type="checkbox" data-purchase-checked-url-value="<%= cart_item_path(cart_item) %>"
-              data-action="change->purchaseChecked#check">
+              data-action="change->purchase-checked#check">
+              <%= cart_item_path(cart_item) %>
             </div>
           <%# end %>
         <% end %>
