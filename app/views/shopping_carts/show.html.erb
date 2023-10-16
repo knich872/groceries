@@ -24,9 +24,10 @@
   <div class="row mx-1">
     <div class="col-lg-9 px-0 mb-4">
       <h5>Items in this cart</h5>
-      <div class="row d-flex flex-wrap" data-controller="purchase-checked">
-        <% @cart_items.each do |cart_item| %>
-          <% if cart_item.bought == false %>
+      <div class="row d-flex flex-wrap" data-controller="purchase-checked"
+      data-purchase-checked-count-value="<%= @cart_items.count %>">
+        <% @cart_items.each_with_index do |cart_item, index| %>
+          <%# if cart_item.bought == false %>
             <div class="col-lg-4 col-6 cart-item-card">
               <div class="card">
                 <% cart_item.item.photos.each do |photo| %>
@@ -40,16 +41,9 @@
                     <%= f.submit 'Buy this item', class: 'btn btn-food' %>
                   <% end %>
               </div>
-              <%= simple_form_for cart_item do |f| %>
-                <%= f.check_box :bought,
-                  data: {
-                    id: cart_item.id,
-                    target: "purchasing"
-                  } %>
-              <% end %>
-              <%# <input type="checkbox" data-purchase-checked-target="purchasing"> %>
+              <input type="checkbox" data-purchase-checked-target=<%= "purchasing#{index}" %>>
             </div>
-          <% end %>
+          <%# end %>
         <% end %>
       </div>
     </div>

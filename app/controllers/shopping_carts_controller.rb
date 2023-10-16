@@ -15,7 +15,8 @@ class ShoppingCartsController < ApplicationController
   def show
     @users = User.all
     @cart_member = CartMember.new
-    @cart_items = @shopping_cart.cart_items
+    @cart_items = @shopping_cart.cart_items.where(bought: false)
+    # @bought_cart_items = @shopping_cart.cart_items.where(bought: true)
     @items = Item.all
   end
 

@@ -7,7 +7,7 @@
     %>
   <%= submit_tag "Find", name: "", class: "btn" %>
 <% end %>
-<div class="row justify-content-between py-4">
+<div class="row justify-content-between py-4" data-controller="purchase-checked">
   <% @shopping_carts.each do |shopping_cart| %>
     <%= render shopping_cart %>
   <% end %>
