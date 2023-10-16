@@ -3,24 +3,23 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="purchase-checked"
 export default class extends Controller {
   static values = {
-    count: Number
+    count: Number,
+    url: String
   }
-  static targets = [purchase_array]
-  for (let i = 0, len = this.countValue, text = "purchasing"; i = len; i++) {
-    purchase_array = []
-    purchase_array.push(text += i.toString())
-  };
+  static targets = ["url"]
 
   connect() {
     console.log("hello from the purchase checked controller");
     console.log(this.countValue);
-    // this.myCartTarget = setInterval(function() {
-    //   card.style.top = div.offsetBottom + 1 + "px"; },
-    //   100);
+    console.log(this.urlValues);
+    console.log(this.urlTargets);
   }
 
-
-  // buy(event) {
-
-  // }
+  check(e) {
+    console.log(this.urlTargets);
+  }
 }
+
+// this.myCartTarget = setInterval(function() {
+//   card.style.top = div.offsetBottom + 1 + "px"; },
+//   100);
