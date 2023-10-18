@@ -18,34 +18,17 @@
     <div class="row nav-links mb-4">
       <%= link_to "Add a new item", new_item_path, class: "btn btn-nav" %>
       <%= link_to "Search for items", items_path, class: "btn btn-nav" %>
-      <%= link_to "Back to my shopping carts", shopping_carts_path, class: "btn btn-nav" %>
+      <%= link_to "Back to my shopping carts", root_path, class: "btn btn-nav" %>
     </div>
   </div>
   <div class="row mx-1">
     <div class="col-lg-9 px-0 mb-4">
       <h5>Items in this cart</h5>
       <div class="row d-flex flex-wrap" data-controller="purchase-checked"
-      data-purchase-checked-count-value="<%= @cart_items.count %>">
+      data-purchase-checked-count-value="<%= @cart_items.count %>"
+      data-purchase-checked-user-value="<%= current_user %>">
         <% @cart_items.each_with_index do |cart_item, index| %>
-          <%# if cart_item.bought == false %>
-            <div class="col-lg-4 col-6 cart-item-card">
-              <div class="card">
-                <% cart_item.item.photos.each do |photo| %>
-                  <%= cl_image_tag(photo.key, height: 400, width: 300, crop: :fit, class: "img-fluid") %>
-                <% end %>
-                <p class="mb-0 pb-4 text-truncate"><%= cart_item.item.name %></p>
-                <p class="mb-0 pb-1">Added by: <%= cart_item.added_by %></p>
-                  <%= simple_form_for cart_item, html: { class: "buy-form"} do |f| %>
-                    <%= f.input :bought, as: :hidden, input_html: { value: true }, class: "mx-4" %>
-                    <%= f.input :bought_by, as: :hidden, input_html: { value: current_user.username } %>
-                    <%= f.submit 'Buy this item', class: 'btn btn-food' %>
-                  <% end %>
-              </div>
-              <input type="checkbox" data-purchase-checked-url-value="<%= cart_item_path(cart_item) %>"
-              data-action="change->purchase-checked#check">
-              <%#= cart_item_path(cart_item) %>
-            </div>
-          <%# end %>
+          <%= render cart_item %>
         <% end %>
         <button data-action="purchase-checked#purchase">Purchase all checked items</button>
       </div>
@@ -54,24 +37,22 @@
       <h5>Recently purchased</h5>
         <ul class="p-0">
           <% @bought_cart_items.each do |cart_item| %>
-            <% if cart_item.bought == true %>
-              <div class="card mb-3 bought">
-                <div class="row g-0">
-                  <div class="col-4">
-                    <% cart_item.item.photos.each do |photo| %>
-                      <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
-                    <% end %>
-                  </div>
-                  <div class="col-8">
-                    <div class="card-body">
-                      <h6 class="card-title"><%= cart_item.item.name %></h6>
-                      <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
-                      <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
-                    </div>
+            <div class="card mb-3 bought">
+              <div class="row g-0">
+                <div class="col-4">
+                  <% cart_item.item.photos.each do |photo| %>
+                    <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
+                  <% end %>
+                </div>
+                <div class="col-8">
+                  <div class="card-body">
+                    <h6 class="card-title"><%= cart_item.item.name %></h6>
+                    <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
+                    <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
                   </div>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
         </ul>
       </div>

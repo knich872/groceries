@@ -21,7 +21,6 @@ class CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
-    # render json: @cart_item
     @cart_item.bought?
     @cart_item.bought_by = current_user.username
     @cart_item.update(cart_item_params)

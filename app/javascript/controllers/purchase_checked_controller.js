@@ -5,13 +5,15 @@ let purchaseArray = [];
 export default class extends Controller {
   static values = {
     count: Number,
-    url: String
+    url: String,
+    user: String
   }
   static targets = [""]
 
   connect() {
     console.log("hello from the purchase checked controller");
     console.log(this.countValue);
+    let purchaseArray = [];
     // console.log(this.urlValues);
     // console.log(this.urlTargets);
   }
@@ -31,7 +33,14 @@ export default class extends Controller {
 
   purchase() {
     purchaseArray.forEach((url) => {
-      fetch(url).then(console.log(response));
+      fetch(url, {
+        method: "PATCH",
+        headers: { "Accept": "application/json" },
+        data: FormData({
+          "bought": true,
+          "bought_by": this.userValue
+        })
+      }).then(console.log(data));
     });
   }
 }
