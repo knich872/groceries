@@ -35,6 +35,9 @@ class ShoppingCartsController < ApplicationController
     end
   end
 
+  def update
+  end
+
   private
 
   def set_shopping_cart

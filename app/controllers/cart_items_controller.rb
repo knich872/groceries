@@ -1,5 +1,10 @@
 class CartItemsController < ApplicationController
 
+  def show
+    @cart_item = CartItem.find(params[:id])
+    render json: @cart_item
+  end
+
   def create
     @cart_item = CartItem.new()
     @item = Item.find(params[:item_id])
@@ -16,9 +21,10 @@ class CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.bought?
-    @cart_item.bought_by = current_user.username
-    @cart_item.update(cart_item_params)
+    render json: @cart_item
+    # @cart_item.bought?
+    # @cart_item.bought_by = current_user.username
+    # @cart_item.update(cart_item_params)
     redirect_to shopping_cart_path(@cart_item.shopping_cart), notice: "Item was marked as purchased."
   end
 
