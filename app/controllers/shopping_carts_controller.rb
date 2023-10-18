@@ -16,6 +16,7 @@ class ShoppingCartsController < ApplicationController
     @users = User.all
     @cart_member = CartMember.new
     @cart_items = @shopping_cart.cart_items.where(bought: false)
+    # render json: @cart_items
     # @bought_cart_items = @shopping_cart.cart_items.where(bought: true)
     @items = Item.all
   end
