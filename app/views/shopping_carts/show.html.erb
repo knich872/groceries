@@ -41,19 +41,19 @@
                     <%= f.submit 'Buy this item', class: 'btn btn-food' %>
                   <% end %>
               </div>
-              <%# <input type="checkbox" data-purchase-checked-url-value="<%= cart_item_path(cart_item) %>
-              <%# data-action="change->purchase-checked#check"> %>
+              <input type="checkbox" data-purchase-checked-url-value="<%= cart_item_path(cart_item) %>"
+              data-action="change->purchase-checked#check">
               <%#= cart_item_path(cart_item) %>
             </div>
           <%# end %>
         <% end %>
-        <%# <button data-action="purchase-checked#purchase">Purchase all checked items</button> %>
+        <button data-action="purchase-checked#purchase">Purchase all checked items</button>
       </div>
     </div>
     <div class="col-lg-3 col-12 px-0 mb-4">
       <h5>Recently purchased</h5>
         <ul class="p-0">
-          <% @cart_items.where('updated_at > ?', 24.hours.ago).each do |cart_item| %>
+          <% @bought_cart_items.each do |cart_item| %>
             <% if cart_item.bought == true %>
               <div class="card mb-3 bought">
                 <div class="row g-0">

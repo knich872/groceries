@@ -17,7 +17,7 @@ class ShoppingCartsController < ApplicationController
     @cart_member = CartMember.new
     @cart_items = @shopping_cart.cart_items.where(bought: false)
     # render json: @cart_items
-    # @bought_cart_items = @shopping_cart.cart_items.where(bought: true)
+    @bought_cart_items = @shopping_cart.cart_items.where('updated_at > ?', 24.hours.ago)
     @items = Item.all
   end
 
