@@ -8,7 +8,7 @@ export default class extends Controller {
     url: String,
     user: String
   }
-  static targets = [""]
+  static targets = ["form"]
 
   connect() {
     console.log("hello from the purchase checked controller");
@@ -32,14 +32,12 @@ export default class extends Controller {
   }
 
   purchase() {
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     purchaseArray.forEach((url) => {
       fetch(url, {
         method: "PATCH",
-        headers: { "Accept": "application/json" },
-        data: FormData({
-          "bought": true,
-          "bought_by": this.userValue
-        })
+        headers: { "Accept": "application/json", "X-CSRF-Token": csrf },
+        body: new FormData(this.formTarget)
       }).then(console.log(data));
     });
   }
