@@ -20,11 +20,17 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    # @shopping_cart = ShoppingCart.find(params[:id])
     @cart_item = CartItem.find(params[:id])
     @cart_item.bought?
     @cart_item.bought_by = current_user.username
     @cart_item.update(cart_item_params)
-    redirect_to shopping_cart_path(@cart_item.shopping_cart), notice: "Item was marked as purchased."
+    respond_to do |format|
+      format.html { redirect_to shopping_cart_path(@cart_item.shopping_cart),
+      notice: "Item was marked as purchased." }
+      format.text { render "shopping_carts/show", locals: {shopping_cart: @shopping_cart},
+      formats: [:html] }
+    end
   end
 
   private

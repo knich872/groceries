@@ -38,7 +38,7 @@ export default class extends Controller {
         method: "PATCH",
         headers: { "Accept": "application/json", "X-CSRF-Token": csrf },
         body: new FormData(this.formTarget)
-      }).then(console.log(data));
+      }).then(response => response.text());
     });
   }
 }
