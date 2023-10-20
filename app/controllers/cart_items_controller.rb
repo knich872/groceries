@@ -39,3 +39,5 @@ class CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought, :added_by, :bought_by)
   end
 end
+
+# Went to the hospital for the delivery
