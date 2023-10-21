@@ -40,4 +40,4 @@ class CartItemsController < ApplicationController
   end
 end
 
-# Went to the hospital for the delivery
+# No delivery yet
