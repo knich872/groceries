@@ -17,7 +17,8 @@ class ShoppingCartsController < ApplicationController
     @cart_item = CartItem.new
     @cart_member = CartMember.new
     @cart_items = @shopping_cart.cart_items.where(bought: false)
-    @bought_cart_items = @shopping_cart.cart_items.where('updated_at > ? AND bought = true', 24.hours.ago)
+    @bought_cart_items = @shopping_cart.cart_items.where('updated_at > ? AND bought = true',
+    24.hours.ago).order(updated_at: :desc).limit(15)
     @frequently_bought_cart_items = @shopping_cart.cart_items.where(bought: true)
     .select(:item_id, 'COUNT(item_id)').group(:item_id).order(count: :desc).limit(10)
     @items = Item.all
