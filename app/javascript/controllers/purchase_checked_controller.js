@@ -35,8 +35,8 @@ export default class extends Controller {
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     purchaseArray.forEach((url) => {
       fetch(url, {
-        method: "PATCH",
         headers: { "Accept": "application/json", "X-CSRF-Token": csrf },
+        method: "PATCH",
         body: new FormData(this.formTarget)
       }).then(response => response.text());
     });

@@ -33,28 +33,53 @@
         <button data-action="purchase-checked#purchase">Purchase all checked items</button>
       </div>
     </div>
-    <div class="col-lg-3 col-12 px-0 mb-4">
-      <h5>Recently purchased</h5>
-        <ul class="p-0">
-          <% @bought_cart_items.each do |cart_item| %>
-            <div class="card mb-3 bought">
-              <div class="row g-0">
-                <div class="col-4">
-                  <% cart_item.item.photos.each do |photo| %>
-                    <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
-                  <% end %>
-                </div>
-                <div class="col-8">
-                  <div class="card-body">
-                    <h6 class="card-title"><%= cart_item.item.name %></h6>
-                    <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
-                    <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
+    <div class="row justify-content-around">
+      <div class="col-lg-3 col-12 px-0 mb-4">
+        <h5>Recently purchased</h5>
+          <ul class="p-0">
+            <% @bought_cart_items.each do |cart_item| %>
+              <div class="card mb-3 bought">
+                <div class="row g-0">
+                  <div class="col-4">
+                    <% cart_item.item.photos.each do |photo| %>
+                      <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
+                    <% end %>
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h6 class="card-title"><%= cart_item.item.name %></h6>
+                      <p class="card-text">Bought by: <%= cart_item.bought_by %></p>
+                      <p class="card-text"><small class="text-body-secondary"><%= cart_item.updated_at.strftime("%m/%d at %I:%M%p") %></small></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-12 px-0 mb-4">
+          <h5>Frequently purchased</h5>
+            <ul class="p-0">
+              <% @frequently_bought_cart_items.each do |cart_item| %>
+                <div class="card mb-3 bought">
+                  <div class="row g-0">
+                    <div class="col-4">
+                      <% cart_item.item.photos.each do |photo| %>
+                        <%= cl_image_tag(photo.key, width: 120, height: 200, crop: :fit, class: "img-fluid rounded-start") %>
+                      <% end %>
+                    </div>
+                    <div class="col-8">
+                      <div class="card-body">
+                        <h6 class="card-title"><%= cart_item.item.name %></h6>
+                        <h6 class="card-title"><%= cart_item.count %></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     <% else %>
       <%= simple_form_for [@shopping_cart, @cart_member] do |f| %>

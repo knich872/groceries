@@ -20,16 +20,16 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    # @shopping_cart = ShoppingCart.find(params[:id])
+    # @shopping_cart = ShoppingCart.find(params[:shopping_cart_id])
     @cart_item = CartItem.find(params[:id])
     @cart_item.bought?
     @cart_item.bought_by = current_user.username
     @cart_item.update(cart_item_params)
     respond_to do |format|
+      format.text { render "shopping_carts/show", locals: {shopping_cart: @cart_item.shopping_cart},
+      formats: [:html] }
       format.html { redirect_to shopping_cart_path(@cart_item.shopping_cart),
       notice: "Item was marked as purchased." }
-      format.text { render "shopping_carts/show", locals: {shopping_cart: @shopping_cart},
-      formats: [:html] }
     end
   end
 
@@ -39,5 +39,3 @@ class CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :shopping_cart_id, :bought, :added_by, :bought_by)
   end
 end
-
-# No delivery yet

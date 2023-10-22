@@ -16,8 +16,9 @@ class ShoppingCartsController < ApplicationController
     @users = User.all
     @cart_member = CartMember.new
     @cart_items = @shopping_cart.cart_items.where(bought: false)
-    # render json: @cart_items
     @bought_cart_items = @shopping_cart.cart_items.where('updated_at > ? AND bought = true', 24.hours.ago)
+    @frequently_bought_cart_items = @shopping_cart.cart_items.where(bought: true)
+    .select(:item_id, 'COUNT(item_id)').group(:item_id).order(count: :desc)
     @items = Item.all
   end
 
