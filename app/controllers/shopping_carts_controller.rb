@@ -14,12 +14,14 @@ class ShoppingCartsController < ApplicationController
 
   def show
     @users = User.all
+    @cart_item = CartItem.new
     @cart_member = CartMember.new
     @cart_items = @shopping_cart.cart_items.where(bought: false)
     @bought_cart_items = @shopping_cart.cart_items.where('updated_at > ? AND bought = true', 24.hours.ago)
     @frequently_bought_cart_items = @shopping_cart.cart_items.where(bought: true)
     .select(:item_id, 'COUNT(item_id)').group(:item_id).order(count: :desc)
     @items = Item.all
+    @shopping_carts = ShoppingCart.find(current_user.shopping_cart_ids)
   end
 
   def new
