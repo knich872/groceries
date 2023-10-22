@@ -63,6 +63,32 @@
   }
 }
 
+.btn-cart-item-remove {
+  background: $healthy-gradient;
+  box-shadow: 5px 5px 10px rgb(159, 159, 159);
+  border: none;
+  color: white;
+  text-shadow: 1px 1px 3px grey;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 40%;
+}
+
+.btn-cart-item-buy {
+  background: $healthy-gradient;
+  box-shadow: 5px 5px 10px rgb(159, 159, 159);
+  border: none;
+  color: white;
+  text-shadow: 1px 1px 3px grey;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
+}
+
 .btn-large {
   width: 150px;
   border-radius: 4px;
@@ -116,6 +142,7 @@
   display: flex;
   justify-content: center;
   margin: auto;
+  width: 50%;
 }
 
 .nav-links {

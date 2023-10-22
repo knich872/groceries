@@ -33,6 +33,15 @@ class CartItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @shopping_cart = ShoppingCart.find(params[:id])
+    @cart_item = CartItem.find(params[:shopping_cart_id])
+    @cart_item.destroy
+    # raise
+    flash[:success] = "The item was removed."
+    redirect_to shopping_cart_path(@shopping_cart)
+  end
+
   private
 
   def cart_item_params
