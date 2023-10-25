@@ -30,7 +30,7 @@
         <% @cart_items.each_with_index do |cart_item, index| %>
           <%= render cart_item %>
         <% end %>
-        <button data-action="purchase-checked#purchase">Purchase all checked items</button>
+        <button data-action="purchase-checked#purchase" class="btn-food">Purchase all checked items</button>
       </div>
     </div>
     <div class="row justify-content-around">
