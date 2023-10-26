@@ -42,7 +42,7 @@
 }
 
 .home-login {
-  background-color: transparent;
+  background-color: rgba(100, 168, 100, 0.5);
   border: none;
   font-size: 3rem;
   text-shadow: 0 0 4px #0ebac5;
@@ -56,7 +56,7 @@
   box-shadow: 0 0 20px #0ebac5;
 
   &:hover {
-    background-color: $offwhite;
+    background-color: $sushi-green;
     box-shadow: 0 0 20px #0ec573;
     text-shadow: 0 0 4px #0ec573;
 
