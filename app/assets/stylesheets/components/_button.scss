@@ -42,10 +42,10 @@
 }
 
 .home-login {
-  background-color: rgba(100, 168, 100, 0.5);
+  background-color: $sushi-green;
   border: none;
   font-size: 3rem;
-  text-shadow: 0 0 4px #0ebac5;
+  text-shadow: 0 0 4px #0ec573;
   transition: color 0.5s, transform 0.2s, background-color 0.2s;
   border-radius: 20px;
   height: 20vh;
@@ -56,10 +56,9 @@
   box-shadow: 0 0 20px #0ebac5;
 
   &:hover {
-    background-color: $sushi-green;
+    background-color: rgba(100, 168, 100, 0.6);
     box-shadow: 0 0 20px #0ec573;
-    text-shadow: 0 0 4px #0ec573;
-
+    text-shadow: 0 0 4px #0ebac5;
   }
 }
 
