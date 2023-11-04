@@ -59,21 +59,174 @@
 }
 
 .meat-color-fill {
-  background-color: #f9906f;
+  background-color: #f85e30;
   padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px #ab4020;
+  }
+  .fa-bacon {
+    text-shadow: 0 0 8px #ab4020;
+  }
 }
 
 .produce-color-fill {
-  background-color: green;
+  background-color: rgb(4, 153, 4);
   padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(3, 93, 3);
+  }
+  .fa-carrot {
+    text-shadow: 0 0 8px rgb(3, 93, 3);
+  }
 }
 
+.seafood-color-fill {
+  background-color: rgb(153, 4, 59);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(198, 31, 92);
+  }
+  .fa-fish {
+    text-shadow: 0 0 8px rgb(198, 31, 92);
+  }
+}
+
+.drinks-color-fill {
+  background-color: rgb(157, 185, 187);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(111, 149, 152);
+  }
+  .fa-glass-water {
+    text-shadow: 0 0 8px rgb(111, 149, 152);
+  }
+}
+
+.dairy-color-fill {
+  background-color: rgb(236, 238, 210);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(184, 186, 155);
+  }
+  .fa-cheese {
+    text-shadow: 0 0 8px rgb(184, 186, 155);
+  }
+}
+
+.grains-color-fill {
+  background-color: rgb(211, 158, 11);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(169, 126, 5);
+  }
+  .fa-wheat-awn {
+    text-shadow: 0 0 8px rgb(169, 126, 5);
+  }
+}
+
+.canned-color-fill {
+  background-color: rgb(127, 164, 118);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(93, 124, 86);
+  }
+  .fa-jar {
+    text-shadow: 0 0 8px rgb(93, 124, 86);
+  }
+}
+
+.frozen-color-fill {
+  background-color: rgb(25, 73, 207);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(65, 108, 226);
+  }
+  .fa-ice-cream {
+    text-shadow: 0 0 8px rgb(65, 108, 226);
+  }
+}
+
+.baking-color-fill {
+  background-color: rgb(117, 54, 10);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(166, 90, 36);
+  }
+  .fa-cookie {
+    text-shadow: 0 0 8px rgb(166, 90, 36);
+  }
+}
+
+.spices-color-fill {
+  background-color: rgb(49, 51, 49);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(81, 90, 81);
+  }
+  .fa-leaf {
+    text-shadow: 0 0 8px rgb(81, 90, 81);
+  }
+}
+
+.sauces-color-fill {
+  background-color: rgb(244, 158, 19);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(180, 115, 10);
+  }
+  .fa-water-bottle {
+    text-shadow: 0 0 8px rgb(180, 115, 10);
+  }
+}
+
+.snacks-color-fill {
+  background-color: rgb(210, 194, 12);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(164, 151, 6);
+  }
+  .fa-stroopwafel {
+    text-shadow: 0 0 8px rgb(164, 151, 6);
+  }
+}
+
+.cleaning-color-fill {
+  background-color: rgb(65, 239, 167);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(34, 179, 118);
+  }
+  .fa-broom {
+    text-shadow: 0 0 8px rgb(34, 179, 118);
+  }
+}
+
+.hygiene-color-fill {
+  background-color: rgb(116, 136, 200);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(75, 93, 155);
+  }
+  .fa-pump-soap {
+    text-shadow: 0 0 8px rgb(75, 93, 155);
+  }
+}
+
+.other-color-fill {
+  background-color: rgb(35, 17, 13);
+  padding: 16px;
+  .category-text {
+    text-shadow: 5px 5px 8px rgb(68, 43, 37);
+  }
+  .fa-circle-question {
+    text-shadow: 0 0 8px rgb(68, 43, 37);
+  }
+}
 
 .category-text {
   color: white;
   text-align: center;
   font-size: 3rem;
-  text-shadow: 0 0 2px white;
 }
 
 .fa-solid {
